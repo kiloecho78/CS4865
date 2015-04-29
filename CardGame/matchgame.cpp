@@ -10,9 +10,9 @@ extern gameboard *MainApp;
 MatchGame::MatchGame(QWidget *par)
 {
     Card *Deck[52];
-    PileField *Places[4];
+    //PileField *Places[4];
     Shuffle(Deck, 52);
-    for(int j =0; j<52; j++)
+    /*for(int j =0; j<52; j++)
     {
         if(j<11){
             Places[j] = new PileField(5+(j*71), 5, 0, 0, par);
@@ -34,7 +34,7 @@ MatchGame::MatchGame(QWidget *par)
     {
         Deck[i] = new Card(i);
         Places[i]->AcceptCards(Deck[i],true,true);
-    }
+    }*/
 }
 
 QString MatchGame::GameName()
