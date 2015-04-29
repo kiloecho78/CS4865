@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>850</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="palette">
@@ -87,7 +87,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>850</width>
      <height>22</height>
     </rect>
    </property>
@@ -101,6 +101,7 @@
      </property>
      <addaction name="action_Klondike"/>
      <addaction name="action_Freecell"/>
+     <addaction name="action_Match_Game"/>
     </widget>
     <addaction name="menu_New"/>
     <addaction name="action_Redeal"/>
@@ -183,6 +184,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="action_Match_Game">
+   <property name="text">
+    <string>&amp;Match Game</string>
    </property>
   </action>
  </widget>

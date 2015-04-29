@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     rule.cpp \
     winningdialog.cpp \
     aboutdialog.cpp \
-    help.cpp
+    help.cpp \
+    matchgame.cpp
 
 HEADERS  += gameboard.h \
     card.h \
@@ -35,7 +36,8 @@ HEADERS  += gameboard.h \
     rule.h \
     winningdialog.h \
     aboutdialog.h \
-    help.h
+    help.h \
+    matchgame.h
 
 FORMS    += gameboard.ui \
     aboutdialog.ui \

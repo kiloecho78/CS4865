@@ -1,10 +1,11 @@
 #include "gameboard.h"
 #include "ui_gameboard.h"
-
+#include "matchgame.h"
 gameboard::gameboard(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::gameboard)
 {
+    Card::Initialize();
     ui->setupUi(this);
 }
 
@@ -56,4 +57,9 @@ void gameboard::on_action_About_triggered()
 void gameboard::on_actionE_xit_triggered()
 {
     close();
+}
+
+void gameboard::on_action_Match_Game_triggered()
+{
+     MatchGame::MatchGame(this);
 }

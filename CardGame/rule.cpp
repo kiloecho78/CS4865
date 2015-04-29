@@ -5,7 +5,7 @@
 
 
 extern gameboard *MainApp;
-extern Game *game;
+//extern Game *game;
 
 bool RuleBaseNone::
 Enforce(Pile *p, Card *c)
@@ -150,7 +150,7 @@ bool RuleMoveSeqIncreasing::Enforce(Pile *p, Card *c)
 
 bool RuleMoveLenghtLimited::Enforce(Pile *p, Card *c)
 {
-    return c->StackSize() <= game->FreeMoves();
+    return c->StackSize() <= 0;//game->FreeMoves();
 }
 
 

@@ -43,6 +43,8 @@ private slots:
 
     void on_actionE_xit_triggered();
 
+    void on_action_Match_Game_triggered();
+
 private:
     Ui::gameboard *ui;
 //    QTime t;

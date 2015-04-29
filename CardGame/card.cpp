@@ -159,10 +159,11 @@ void Card::mouseDoubleClickEvent(QMouseEvent *)
 
 Card* Card::AdjustPositions(QPoint newPos, QPoint delta)
 {
-    
+    return this;
 }
 
 int Card::StackSize()
+// fix this
 {
-
+    return 0;
 }
