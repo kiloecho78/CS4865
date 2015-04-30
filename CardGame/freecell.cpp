@@ -1,6 +1,10 @@
 #include "freecell.h"
+#include "pile.h"
+#include "card.h"
 
-Freecell::Freecell()
+
+
+Freecell::Freecell(QWidget *par)
 {
 
 }

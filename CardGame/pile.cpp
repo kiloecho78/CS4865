@@ -4,7 +4,7 @@
 #include "cardmove.h"
 
 extern gameboard *MainApp;
-//extern Game *game;
+extern Game *game;
 extern QList<Pile*> piles;
 
 //static member data
@@ -28,12 +28,12 @@ Pile::Pile(int x, int y,
            QWidget *parent):
     QLabel(parent), delta(QPoint(dx,dy)),top(0), bottom(0)
 {
-//    game->AddPile(this);
+    game->AddPile(this);
     move(x,y);
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-//    this->pallete().setColor(BACKGROUND_BLUE,BLACK);
+    this->pallete().setColor(BACKGROUND_BLUE,BLACK);
     show();
 }
 

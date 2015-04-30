@@ -1,17 +1,26 @@
 #ifndef GAME_H
 #define GAME_H
-#include "card.h"
-//edit to remove
+#include <QWidget>
+#include<QList>
+enum hardtype {REPEAT, EASY, MEDIUM, HARD};
+class Pile;
+class Card;
 
 class Game
 {
+protected:
+    QWidget *parent;
+    QList<Pile*> piles;
 public:
     Game(QWidget *par);
-    ~Game();
-    void CheckWin();
+    virtual ~Game();
+    void Clear();
+    virtual void CheckWin();
     void AddPile(Pile *p);
-    int FreeMoves();
+    virtual int FreeMoves(){return 0;}//calculates
+    virtual void ReDeal(hardtype h = REPEAT) = 0;
+
 };
 
-
+//piles created after the cards
 #endif // GAME_H
