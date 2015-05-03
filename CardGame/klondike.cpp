@@ -26,7 +26,7 @@ void Klondike::ReDeal()
         Deck[i] = new Card(i); //create facedown
     Shuffle(Deck,52);
     //now create board layout.
-/*    for(int i=0; i<4; i++)
+    for(int i=0; i<4; i++)
 
         playOff[i]= new PilePlayOff(266+82*i, 10,0,0,parent);
     playOff[0]->AddDropRules(4,new RuleStackSameSlot(),
@@ -60,11 +60,11 @@ void Klondike::ReDeal()
         {
             if(pass == pile)
                 Deck[i]->Flip();
-            Deck[i++]->Move(field(pile));
+            Deck[i++]->Move(field[pile]);
         }
     while(i<52)
         Deck[i++]->Move(deal);
-*/}
+}
 
 void Klondike::DealAction()
 {

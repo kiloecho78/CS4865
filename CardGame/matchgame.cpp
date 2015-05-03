@@ -39,7 +39,7 @@ MatchGame::MatchGame(QWidget *par)
 
 QString MatchGame::GameName()
 {
-
+    return "Match";
 }
 
 void MatchGame::DealAction()

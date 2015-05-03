@@ -34,7 +34,7 @@ void Game::CheckWin()
     if(allEmpty)
     {
         WinBox->show();
-        CardMove::Clear();
+//        CardMove::Clear();
     }
 }
 
@@ -72,7 +72,7 @@ void Game::PlayOffAll()
         while(n<m)
         {
             if(piles[n]->Type() > DEAL && piles[n]->Top())
-                cardFound != PlayOff(piles[n]->Top());
+                cardFound |= PlayOff(piles[n]->Top());
             n++;
         }
     }while(cardFound);

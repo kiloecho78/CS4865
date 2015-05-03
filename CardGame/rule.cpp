@@ -5,7 +5,7 @@
 
 
 extern gameboard *MainApp;
-//extern Game *game;
+extern Game *game;
 
 bool RuleBaseNone::
 Enforce(Pile *p, Card *c)

@@ -54,7 +54,7 @@ public:
     void Move(Pile* to, bool expose =true);
     Card* AdjustPositions(QPoint newPos, QPoint delta);
     void AlignWithPile();
-    void Animate(QPoint newpos);//not really necessary
+//    void Animate(QPoint newpos);//not really necessary
     static void Initialize(); //do not require an instance of the object type to be called. initializes the static array of cards
     void Flip();//changes the face-up value of the card
     QSize sizeHint() const;

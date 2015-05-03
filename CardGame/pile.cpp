@@ -33,7 +33,7 @@ Pile::Pile(int x, int y,
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-    this->pallete().setColor(BACKGROUND_BLUE,BLACK);
+//    this->palette().setColor(BACKGROUND_BLUE, BLACK);
     show();
 }
 
@@ -43,7 +43,7 @@ Pile::~Pile()
     while (c)
     {
         bottom = c->over;
-            //c->setParent(NULL);
+            c->setParent(NULL);
             delete c;
             c = bottom;
     }
@@ -68,7 +68,7 @@ void Pile::AcceptCards(Card* c, bool expose, bool record)
     }
     c->pile = this;
     top = c->AdjustPositions(cardPosition, delta);
-//    if(c->pip == KING && Type()==PLAYOFF) game->CheckWin();
+    if(c->pip == KING && Type()==PLAYOFF) game->CheckWin();
 }
 
 void Pile::ReleaseCards(Card *c, bool expose)
@@ -82,7 +82,7 @@ void Pile::ReleaseCards(Card *c, bool expose)
             top->under = NULL;
             if(expose) top->Faceup(true);
         }else{
-
+// unknown
         }
     }
 //}
@@ -145,6 +145,7 @@ bool Pile::CanBeDragged(Card *c)
         ok = DragRule(i++)->Enforce(this, c);
     return ok;
 }
+/*
 
 
 
@@ -155,6 +156,8 @@ bool Pile::CanBeDragged(Card *c)
 
 
 
+Probably a removed function
+Unknown check to see if something is missing
 
 
 
@@ -164,10 +167,7 @@ bool Pile::CanBeDragged(Card *c)
 
 
 
-
-
-
-
+*/
 void Pile::FindClosestDrop(Card *c)
 {
     const int NUM=3;
@@ -179,7 +179,7 @@ void Pile::FindClosestDrop(Card *c)
         Pile *p = game->piles[i];
         if(p == c->pile)continue;
         QPoint diff = drop - (p->top?p->top->pos():p->pos());
-        int dif = diff.manhattanLength();
+        int dist = diff.manhattanLength();
         for (int j=0;j<NUM;j++)
         {
             if(dist<distance[j])

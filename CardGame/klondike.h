@@ -9,7 +9,7 @@ class Klondike:public Game
 {
     Pile *deal;
     Pile *dealt;
-    Pile *playoff[4];
+    Pile *playOff[4];
     Pile *field[7];
 public:
     Klondike(QWidget *par);

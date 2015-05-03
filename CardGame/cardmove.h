@@ -4,6 +4,7 @@
 
 class Cardmove
 {
+
 public:
     Cardmove();
     ~Cardmove();

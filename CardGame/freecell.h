@@ -18,7 +18,7 @@ public:
     void DealAction();
     QString GameName();
     void OnFieldClick(Card *c);
-    void OnDealClick(Card *c);
+    int FreeMoves();
 };
 
 #endif // FREECELL_H

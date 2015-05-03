@@ -2,7 +2,7 @@
 #define GAMEBOARD_H
 #include "card.h"
 #include <QMainWindow>
-
+#include <QTime>
 
 
 
@@ -24,22 +24,16 @@ public:
     explicit gameboard(QWidget *parent = 0);
     ~gameboard();
 
-private slots:
+public slots:
     void on_action_Klondike_triggered();
 
     void on_action_Freecell_triggered();
 
     void on_action_Redeal_triggered();
 
-    void on_action_Playoff_triggered();
-
     void on_actionPreference_s_triggered();
 
     void on_action_Undo_triggered();
-
-    void on_actionRu_les_triggered();
-
-    void on_action_About_triggered();
 
     void on_actionE_xit_triggered();
 
@@ -47,12 +41,13 @@ private slots:
 
 private:
     Ui::gameboard *ui;
-//    QTime t;
+    QTime t;
     void DealKlondike();
 
     void DealFreeCell();
     void CleanUp();
     Card *deck[104];
+
 
 public:
     bool Deal3();
@@ -60,5 +55,13 @@ public:
 
     void CardClicked(Card * c);
     void KlondikeDeal();
+
+private slots:
+    void on_action_About_triggered();
+
+    void on_action_Playoff_triggered();
+
+    void on_actionRu_les_triggered();
+
 };
 #endif // GAMEBOARD_H

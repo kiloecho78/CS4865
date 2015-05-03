@@ -35,7 +35,7 @@ Card::Card(pips p, suits s, QWidget *parent):
     QLabel(parent), under(0), over(0), pile(0), pip(p), suit(s), faceup(false),
     moving(false), hasMouseDown(false)
 {
-    value = suit*13 + pip;
+    value = suit*SUIT_SIZE + pip;
     color = static_cast<cardColors>((suit>1)^(suit&1));
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -167,12 +167,28 @@ Card* Card::AdjustPositions(QPoint newPos, QPoint delta)
     return top;
 }
 
+void Card::AlignWithPile()
+{
+
+}
+
+/*void Card::Animate(QPoint newpos)
+{
+
+}*/
+
 int Card::StackSize()
 // fix this
 {
     return 0;
 }
 void Card::mouseDoubleClickEvent(QMouseEvent *)
+{
+
+}
+
+
+void Card::Playoff()
 {
 
 }
