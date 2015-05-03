@@ -118,7 +118,7 @@ public:
     Rule* DropRule(int i);
     void DropRule(int i, Rule* r);
     void OnClickEvent(Card* c);
-    void mouseDoubleClickEvent(Card *c);
+//    void mouseDoubleClickEvent(Card *c);
     pileType Type(){return FREE_CELL;}
 };
 
@@ -133,7 +133,7 @@ public:
     Rule* DropRule(int i);
     void DropRule(int i, Rule* r);
     void OnClickEvent(Card* c);
-    void mouseDoubleClickEvent(Card *c);
+//    void mouseDoubleClickEvent(Card *c);
     pileType Type(){return DEALT;}
 };
 #endif // PILE_H

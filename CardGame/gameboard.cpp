@@ -1,7 +1,7 @@
 #include "gameboard.h"
 #include "ui_gameboard.h"
 #include "game.h"
-class Klondike;
+#include "klondike.h"
 
 
 

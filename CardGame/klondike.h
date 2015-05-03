@@ -13,7 +13,7 @@ class Klondike:public Game
     Pile *field[7];
 public:
     Klondike(QWidget *par);
-    void ReDeal();
+    void ReDeal(hardtype h);
     QString GameName();
     void DealAction();
     void OnFieldClick(Card*c);

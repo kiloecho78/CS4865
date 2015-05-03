@@ -17,9 +17,9 @@ QString Klondike::GameName()
     return "Klondike";
 }
 
-void Klondike::ReDeal()
+void Klondike::ReDeal(hardtype h)
 {
-    //Clear();
+    Clear();
     // create and shuffle deck;
     Card* Deck[52];
     for(int i = 0; i<52; i++)
@@ -29,7 +29,7 @@ void Klondike::ReDeal()
     for(int i=0; i<4; i++)
 
         playOff[i]= new PilePlayOff(266+82*i, 10,0,0,parent);
-    playOff[0]->AddDropRules(4,new RuleStackSameSlot(),
+    playOff[0]->AddDropRules(4,new RuleStackSameSuit(),
                              new RuleStackPlusOne(),
                              new RuleBaseAce(),
                              new RuleMoveOneAtATime());
