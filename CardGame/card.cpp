@@ -44,9 +44,8 @@ Card::Card(pips p, suits s, QWidget *parent):
 }
 
 QSize Card::sizeHint() const
-{
-    return QSize(71,96);
-}
+{return QSize(71,96);}
+
 //Used for dealing
 void Card::Move(Pile* to, bool expose)
 {
@@ -152,18 +151,28 @@ void Card::mouseReleaseEvent(QMouseEvent *ev)
     okToDrag = false;
 }
 
-void Card::mouseDoubleClickEvent(QMouseEvent *)
-{
-
-}
-
 Card* Card::AdjustPositions(QPoint newPos, QPoint delta)
 {
-    return this;
+    Card *c = this;
+    Card *top;
+    do{
+        c->move(newPos);
+        c->raise();
+        c->show();
+        newPos += (delta/(c->faceup?1:2));
+        top = c;
+        c->pile = pile;
+        c = c->over;
+    }while(c);
+    return top;
 }
 
 int Card::StackSize()
 // fix this
 {
     return 0;
+}
+void Card::mouseDoubleClickEvent(QMouseEvent *)
+{
+
 }

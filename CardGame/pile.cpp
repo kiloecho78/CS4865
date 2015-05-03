@@ -73,19 +73,19 @@ void Pile::AcceptCards(Card* c, bool expose, bool record)
 
 void Pile::ReleaseCards(Card *c, bool expose)
 {
-    //
+    if(c && c->pile && c->pile==this)
+    {
+        if(c->under)
+        {
+            top=c->under;
+            top->over = NULL;
+            top->under = NULL;
+            if(expose) top->Faceup(true);
+        }else{
+
+        }
+    }
 //}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -125,11 +125,6 @@ void Pile::AddDragRules(int n ...)
     va_end(lp);
 }
 
-void Pile::mouseReleaseEvent(QMouseEvent *ev)
-{
-
-}
-
 
 bool Pile::CanBeDropped(Card *c)
 {
@@ -138,11 +133,6 @@ bool Pile::CanBeDropped(Card *c)
     while(ok && DropRule(i))
         ok = DropRule(i++)->Enforce(this, c);
     return ok;
-}
-
-void Pile::FindClosestDrop(Card *c)
-{
-
 }
 
 
@@ -154,5 +144,156 @@ bool Pile::CanBeDragged(Card *c)
     while(ok && DragRule(i))
         ok = DragRule(i++)->Enforce(this, c);
     return ok;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Pile::FindClosestDrop(Card *c)
+{
+    const int NUM=3;
+    QPoint drop = c->pos();
+    Pile *closest[NUM]={NULL,NULL,NULL};
+    int distance[NUM]={10000,20000,30000};
+    for(int i =0; i<game->piles.count(); i++)
+    {
+        Pile *p = game->piles[i];
+        if(p == c->pile)continue;
+        QPoint diff = drop - (p->top?p->top->pos():p->pos());
+        int dif = diff.manhattanLength();
+        for (int j=0;j<NUM;j++)
+        {
+            if(dist<distance[j])
+            {
+
+            }
+
+
+
+
+
+
+
+
+
+            closest[i]->AcceptCards(c);
+            return;
+        }
+    }
+    QPoint p = c->under?(c->under->pos()+c->pile->Delta()/
+                         (c->under->faceup?1:2))
+                      :c->pile->pos();
+    c->AdjustPositions(p,c->pile->delta);
+}
+void Pile::mouseReleaseEvent(QMouseEvent *ev)
+{
+    OnClickEvent(NULL);
+}
+/*
+
+
+
+
+left blank intentionally
+
+
+
+
+
+*/
+PileField::PileField(int x, int y, int dx, int dy, QWidget *parent):
+    Pile(x, y, dx, dy, parent)
+{}
+Rule* PileField::DragRule(int i)
+    {return dragRules[i];}
+void PileField::DragRule(int i, Rule *r)
+{dragRules[i]=r;}
+Rule*PileField::DropRule(int i)
+{return dropRules[i];}
+void PileField::DropRule(int i, Rule *r)
+{dropRules[i]=r;}
+void PileField::OnClickEvent(Card *c)
+{game->OnFieldClick(c);}
+void PileField::mouseDoubleClickEvent(Card *c)
+{game->OnFieldDoubleClick(c);}
+
+PilePlayOff::PilePlayOff(int x, int y, int dx, int dy,
+                         QWidget *parent):
+    Pile(x,y,dx,dy,parent)
+{}
+Rule* PilePlayOff::DragRule(int i)
+    {return dragRules[i];}
+void PilePlayOff::DragRule(int i, Rule *r)
+{dragRules[i]=r;}
+Rule*PilePlayOff::DropRule(int i)
+{return dropRules[i];}
+void PilePlayOff::DropRule(int i, Rule *r)
+{dropRules[i]=r;}
+
+
+PileDeal::PileDeal(int x, int y, int dx, int dy,
+                   QWidget *parent):
+    Pile(x,y,dx,dy,parent)
+{}
+Rule* PileDeal::DragRule(int i)
+    {return dragRules[i];}
+void PileDeal::DragRule(int i, Rule *r)
+{dragRules[i]=r;}
+Rule*PileDeal::DropRule(int i)
+{return dropRules[i];}
+void PileDeal::DropRule(int i, Rule *r)
+{dropRules[i]=r;}
+void PileDeal::OnClickEvent(Card *c)
+{game->OnDealClick(c);}
+
+PileDealt::PileDealt(int x, int y, int dx, int dy,
+                     QWidget *parent):
+    Pile(x,y,dx,dy,parent)
+{}
+Rule* PileDealt::DragRule(int i)
+    {return dragRules[i];}
+void PileDealt::DragRule(int i, Rule *r)
+{dragRules[i]=r;}
+Rule*PileDealt::DropRule(int i)
+{return dropRules[i];}
+void PileDealt::DropRule(int i, Rule *r)
+{dropRules[i]=r;}
+void PileDealt::OnClickEvent(Card *c)
+{game->OnDealtClick(c);}
+
+PileFreeCell::PileFreeCell(int x, int y, int dx, int dy,
+                           QWidget *parent):
+    Pile(x,y,dx,dy,parent)
+{}
+Rule* PileFreeCell::DragRule(int i)
+    {return dragRules[i];}
+void PileFreeCell::DragRule(int i, Rule *r)
+{dragRules[i]=r;}
+Rule*PileFreeCell::DropRule(int i)
+{return dropRules[i];}
+void PileFreeCell::DropRule(int i, Rule *r)
+{dropRules[i]=r;}
+void PileFreeCell::OnClickEvent(Card *c)
+{
+    game->OnFreeCellClick(c);
 }
 
