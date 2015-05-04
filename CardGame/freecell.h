@@ -13,7 +13,7 @@ class Freecell:public Game
     Pile* playOff[4];
 public:
     Freecell(QWidget *par);
-    void ReDeal();
+    void ReDeal(hardtype h);
     void PlayOff(bool all = false);
     void DealAction();
     QString GameName();

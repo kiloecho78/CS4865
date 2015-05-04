@@ -2,6 +2,7 @@
 #include "ui_gameboard.h"
 #include "game.h"
 #include "klondike.h"
+#include "freecell.h"
 
 
 
@@ -58,19 +59,26 @@ void gameboard::on_action_Klondike_triggered()
 void gameboard::
 on_action_Redeal_triggered()
 {
-
+    game->ReDeal();
 }
 
 void gameboard::on_action_Freecell_triggered()
 {
-
+    if(game) delete game;
+    resize(700,600);
+    setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum));
+    game = new Freecell(ui->centralWidget);
+    qsrand(t.elapsed());
+    game->ReDeal();
+//  CardMove::Clear();
+    setWindowTitle("Freecell");
 }
 
 
 
 void gameboard::on_action_Playoff_triggered()
 {
-
+    game->PlayOffAll();
 }
 
 void gameboard::on_actionPreference_s_triggered()

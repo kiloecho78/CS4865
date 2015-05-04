@@ -125,7 +125,7 @@ void Pile::AddDragRules(int n ...)
     va_end(lp);
 }
 
-
+//Checks the rules to see if a card or stack can be dropped
 bool Pile::CanBeDropped(Card *c)
 {
     int i = 0;
@@ -136,7 +136,7 @@ bool Pile::CanBeDropped(Card *c)
 }
 
 
-
+//Checks to see if a card or card & stack above can be removed from pile
 bool Pile::CanBeDragged(Card *c)
 {
     int i = 0;
@@ -202,7 +202,7 @@ void Pile::FindClosestDrop(Card *c)
     QPoint p = c->under?(c->under->pos()+c->pile->Delta()/
                          (c->under->faceup?1:2))
                       :c->pile->pos();
-    c->AdjustPositions(p,c->pile->delta);
+    c->AdjustPositions(p,c->pile->delta);//put them back if not
 }
 void Pile::mouseReleaseEvent(QMouseEvent *ev)
 {

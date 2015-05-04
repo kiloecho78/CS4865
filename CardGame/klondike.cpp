@@ -23,7 +23,7 @@ void Klondike::ReDeal(hardtype h)
     // create and shuffle deck;
     Card* Deck[52];
     for(int i = 0; i<52; i++)
-        Deck[i] = new Card(i); //create facedown
+        Deck[i] = new Card(i, parent); //create facedown
     Shuffle(Deck,52);
     //now create board layout.
     for(int i=0; i<4; i++)
@@ -78,7 +78,10 @@ void Klondike::OnFieldClick(Card *c)
 
 void Klondike::OnDealClick(Card *c)
 {
-
+    for(int i = 0; i<3; i++)
+    {
+        deal->Top()->Move(dealt);
+    }
 }
 
 void Klondike::OnDealtClick(Card *c)

@@ -18,7 +18,7 @@ int Freecell::FreeMoves()
     return fm;
 }
 
-void Freecell::ReDeal()
+void Freecell::ReDeal(hardtype h)
 {
     Clear();
     Card* Deck[52];
@@ -56,7 +56,7 @@ void Freecell::ReDeal()
                            new RuleMoveLenghtLimited);
 
     for(int i=0;i<52;i++)
-        Deck[i]->Move(field[i%7]);
+        Deck[i]->Move(field[i%8]);
 }
 
 QString Freecell::GameName()

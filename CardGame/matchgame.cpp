@@ -33,7 +33,7 @@ MatchGame::MatchGame(QWidget *par)
     for(int i =0; i<52; i++)
     {
         Deck[i] = new Card(i);
-        Places[i]->AcceptCards(Deck[i],true,true);
+        Places[i]->AcceptCards(Deck[i],expose,true);
     }*/
 }
 
