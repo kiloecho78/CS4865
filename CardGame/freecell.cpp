@@ -1,8 +1,6 @@
 #include "freecell.h"
 #include "pile.h"
 #include "card.h"
-#include "cardmove.h"
-#include "winningdialog.h"
 
 Freecell::Freecell(QWidget *par)
     :Game(par)
@@ -51,9 +49,9 @@ void Freecell::ReDeal(hardtype h)
                            new RuleStackLengthLimited,
                            new RuleStackMinusOne);
     field[0]->AddDragRules(3,
-                           new RuleMoveSeqDecreasing,
+                           new RuleMoveLenghtLimited,
                            new RuleMoveAltColor,
-                           new RuleMoveLenghtLimited);
+                           new RuleMoveSeqDecreasing);
 
     for(int i=0;i<52;i++)
         Deck[i]->Move(field[i%8]);
@@ -66,12 +64,7 @@ QString Freecell::GameName()
 
 void Freecell::OnFieldClick(Card *c)
 {
-
-}
-
-void Freecell::PlayOff(bool all)
-{
-
+    if(c) PlayOff(c);
 }
 
 void Freecell::DealAction()

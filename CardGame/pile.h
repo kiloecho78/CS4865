@@ -18,7 +18,7 @@ class Pile:public QLabel
     Card *top;
     Card *bottom;
     int rulesSet;
-    //missing something here
+
 
 public:
     Pile(int x, int y, int dx, int dy, QWidget *parent);

@@ -50,7 +50,7 @@ private:
 
 
 public:
-    bool Deal3();
+    bool Deal3(){return true;}
     void PlayOff(Card * c);
 
     void CardClicked(Card * c);

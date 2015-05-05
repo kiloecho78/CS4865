@@ -169,7 +169,7 @@ Card* Card::AdjustPositions(QPoint newPos, QPoint delta)
 
 void Card::AlignWithPile()
 {
-
+    move(pile->pos());
 }
 
 /*void Card::Animate(QPoint newpos)
@@ -178,17 +178,25 @@ void Card::AlignWithPile()
 }*/
 
 int Card::StackSize()
-// fix this
 {
-    return 0;
+    int count = 0;
+    Card* card = this;
+    do
+    {
+        count++;
+        card = card->over;
+    }while(card);
+    return count;
 }
 void Card::mouseDoubleClickEvent(QMouseEvent *)
 {
+    if(pile)
+        pile->mouseDoubleClickEvent(this);
 
 }
 
 
 void Card::Playoff()
 {
-
+    game->PlayOff(this);
 }

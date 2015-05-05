@@ -14,7 +14,6 @@ class Freecell:public Game
 public:
     Freecell(QWidget *par);
     void ReDeal(hardtype h);
-    void PlayOff(bool all = false);
     void DealAction();
     QString GameName();
     void OnFieldClick(Card *c);

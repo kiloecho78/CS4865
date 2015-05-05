@@ -3,12 +3,11 @@
 #include "game.h"
 #include "klondike.h"
 #include "freecell.h"
+#include "help.h"
+#include "aboutdialog.h"
 
-
-
-
-
-
+extern AboutDialog *About;
+extern Help *help;
 
 
 
@@ -93,12 +92,12 @@ void gameboard::on_action_Undo_triggered()
 
 void gameboard::on_actionRu_les_triggered()
 {
-
+    help->show();
 }
 
 void gameboard::on_action_About_triggered()
 {
-
+    About->show();
 }
 
 void gameboard::on_action_Match_Game_triggered()

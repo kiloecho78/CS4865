@@ -52,7 +52,7 @@ Enforce(Pile *p, Card *c)
 bool RuleStackMinusOne::
 Enforce(Pile *p, Card *c)
 {
-    return p->Empty() || p->Top()->Pip();
+    return p->Empty() || p->Top()->Pip() - c->Pip() == 1;
 }
 
 bool RuleStackPlusOne::
@@ -96,9 +96,9 @@ bool RuleStackLengthLimited::
 Enforce(Pile *p, Card *c)
 {
     int cs = c->StackSize();
-//    int fm = game->FreeMoves();
-//    fm>>= p->Empty()?1:0;
-    return cs <= 0;//fm;
+    int fm = game->FreeMoves();
+    fm>>= p->Empty()?1:0;
+    return cs <= fm;
 }
 
 bool RuleMoveSameSuit::
@@ -150,7 +150,7 @@ bool RuleMoveSeqIncreasing::Enforce(Pile *p, Card *c)
 
 bool RuleMoveLenghtLimited::Enforce(Pile *p, Card *c)
 {
-    return c->StackSize() <= 0;//game->FreeMoves();
+    return c->StackSize() <= game->FreeMoves();
 }
 
 

@@ -69,7 +69,7 @@ void Klondike::ReDeal(hardtype h)
 void Klondike::DealAction()
 {
     Pile *p = deal;
-    int n  0;
+    int n = 0;
     if(deal->Top())
     {   Card *c = deal->Top();
         c->Faceup(true);
@@ -82,23 +82,24 @@ void Klondike::DealAction()
             if(deal->Top()){dealt->AcceptCards(deal->Top(), false, true);n++;}
         }
     }else{//no cards left to deal means recycle the dealt pile
-        while(dealt->Top())}
+        while(dealt->Top())
+        {
+            dealt->Top()->Faceup(false);
+            p->AcceptCards(dealt->Top(),false, true);
+            n++;
+        }
+    }
+//    if(n)new CardMove(n);
 }
-
 void Klondike::OnFieldClick(Card *c)
 {
-
+    if (c) PlayOff(c);
 }
-
 void Klondike::OnDealClick(Card *c)
 {
-    for(int i = 0; i<3; i++)
-    {
-        deal->Top()->Move(dealt);
-    }
+    DealAction();
 }
-
 void Klondike::OnDealtClick(Card *c)
 {
-
+    if (c) PlayOff(c);
 }

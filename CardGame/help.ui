@@ -48,16 +48,111 @@
     <attribute name="title">
      <string>Klondike</string>
     </attribute>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>391</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>389</width>
+        <height>289</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>2</y>
+         <width>381</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>1.The seven piles of cards in the center of the board are the field piles. 
+2.Only a King can be moved onto an empty field pile
+3.You may place a card on top of another card if that card is of the 
+opposite color and one pip lower than the card to be placed.
+4.You may move all the cards from one field pile to another if the stack
+to be moved is in the correct sequence and follows the rules above.
+5.The pile to the upper left is the Deal pile, click this pile to show the top
+three cards on the Dealt pile.
+6.Only the top card can be moved off of the dealt pile.
+7.The four piles to the top right are the Playoff piles. Cards are placed
+in these piles in ascending order according to suit, from Ace to King</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="FreecellTab">
     <attribute name="title">
      <string>Freecell</string>
     </attribute>
+    <widget class="QScrollArea" name="scrollArea_2">
+     <property name="geometry">
+      <rect>
+       <x>-1</x>
+       <y>-1</y>
+       <width>391</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>389</width>
+        <height>289</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>2</y>
+         <width>381</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1.There are 8 field piles in the middle of the game board dealt face up.&lt;/p&gt;&lt;p&gt;2.A card can only be placed on another card if that card is of the opposite&lt;/p&gt;&lt;p&gt;   color and if it is 1 pip larger in value than the card being moved.&lt;/p&gt;&lt;p&gt;3.Any card can be placed on an empty field pile&lt;/p&gt;&lt;p&gt;4.The 4 piles to the top right are called the free cells.  Only 1 card can be&lt;/p&gt;&lt;p&gt;   placed in a free cell at a time.&lt;/p&gt;&lt;p&gt;5.You may move stacks of cards in the field if there is enough free spaces &lt;/p&gt;&lt;p&gt;   available to move all of the cards in the stack above the chosen card.&lt;/p&gt;&lt;p&gt;6.The 4 piles to the top right are the playoff piles.  Move cards to these &lt;/p&gt;&lt;p&gt;   piles according to suit in ascending order, ace to king.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="GeneralHelpTab">
     <attribute name="title">
      <string>General</string>
     </attribute>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>2</y>
+       <width>381</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Solitaire is played with one standard deck of 52 cards.&lt;/p&gt;&lt;p&gt; The games are meant to be played by a single player. &lt;/p&gt;&lt;p&gt;Anyone found violating the holy rules of play will be shot on &lt;/p&gt;&lt;p&gt;site and their ashes will be pissed on by a herd of feral cats.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
