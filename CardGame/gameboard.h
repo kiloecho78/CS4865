@@ -1,11 +1,11 @@
 #ifndef GAMEBOARD_H
 #define GAMEBOARD_H
-#include "card.h"
+#include <QtGui>
+#include <QWidget>
 #include <QMainWindow>
-#include <QTime>
-
-
-
+#include <QLabel>
+#include "pile.h"
+#include "card.h"
 
 
 

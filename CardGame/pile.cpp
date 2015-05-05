@@ -33,7 +33,7 @@ Pile::Pile(int x, int y,
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-//    this->palette().setColor(BACKGROUND_BLUE, BLACK);
+    this->palette().setColor(0x10, BLACK);
     show();
 }
 
@@ -82,24 +82,24 @@ void Pile::ReleaseCards(Card *c, bool expose)
             top->under = NULL;
             if(expose) top->Faceup(true);
         }else{
-// unknown
+            top=bottom=NULL;
         }
     }
-//}
-
-
-
-
-
-
-
-
-
-
-
-//    va_end(lp);
 }
+/*
 
+
+
+
+nothing here
+
+
+
+
+
+
+
+*/
 void Pile::AddDropRules(int n ...)
 {
     va_list lp;
@@ -184,17 +184,17 @@ void Pile::FindClosestDrop(Card *c)
         {
             if(dist<distance[j])
             {
+                std::swap(dist,distance[j]);
 
+                std::swap(p,closest[j]);
             }
-
-
-
-
-
-
-
-
-
+        }
+    }
+    for(int i = 0; i<NUM; i++)
+    {
+        if(closest[i]&&
+                closest[i]->CanBeDropped(c))
+        {
             closest[i]->AcceptCards(c);
             return;
         }

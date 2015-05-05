@@ -68,7 +68,21 @@ void Klondike::ReDeal(hardtype h)
 
 void Klondike::DealAction()
 {
-
+    Pile *p = deal;
+    int n  0;
+    if(deal->Top())
+    {   Card *c = deal->Top();
+        c->Faceup(true);
+        dealt->AcceptCards(c,MainApp->Deal3(),true);
+        n++;
+        c->AlignWithPile();
+        if(MainApp->Deal3())
+        {
+            if(deal->Top()){dealt->AcceptCards(deal->Top(),true, true); n++;}
+            if(deal->Top()){dealt->AcceptCards(deal->Top(), false, true);n++;}
+        }
+    }else{//no cards left to deal means recycle the dealt pile
+        while(dealt->Top())}
 }
 
 void Klondike::OnFieldClick(Card *c)
