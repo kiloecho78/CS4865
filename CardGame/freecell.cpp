@@ -1,7 +1,7 @@
 #include "freecell.h"
 #include "pile.h"
 #include "card.h"
-//test
+//Test Mac to School
 Freecell::Freecell(QWidget *par)
     :Game(par)
 {
