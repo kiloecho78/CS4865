@@ -1,7 +1,7 @@
 #include "freecell.h"
 #include "pile.h"
 #include "card.h"
-
+//test
 Freecell::Freecell(QWidget *par)
     :Game(par)
 {
