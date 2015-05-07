@@ -42,7 +42,7 @@
     <bool>false</bool>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="KlondikeTab">
     <attribute name="title">
@@ -116,6 +116,37 @@ piles according to suit in ascending order, ace to king.</string>
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="Match">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+    <widget class="QPlainTextEdit" name="plainTextEdit_4">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>0</y>
+       <width>391</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="plainText">
+      <string>1. Match two cards to remove them from the playing area
+
+2. Cards must match color and face value only.
+
+3. Game is played with a single deck so matching color, value and suit is impossible.
+
+4. Undo is disabled for this game because no one really needs to undo a move in the memory game.
+
+5.  My bet is no one is actually still reading any of these rules and so I can say whatever I want here.
+
+6. I hate C++, I probably could've programmed this whole game suite in Java in a week.</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="GeneralHelpTab">
     <attribute name="title">
      <string>General</string>
@@ -133,8 +164,11 @@ piles according to suit in ascending order, ace to king.</string>
       <bool>true</bool>
      </property>
      <property name="plainText">
-      <string>Solitaire is played with one standard deck of 52 cards.
+      <string>
+Solitaire is played with one standard deck of 52 cards.
+
 The games are meant to be played by a single player. 
+
 Anyone found violating the holy rules of play will be shot on 
 site and their ashes will be pissed on by a herd of feral cats.</string>
      </property>

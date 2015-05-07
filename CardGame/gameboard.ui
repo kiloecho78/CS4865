@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>515</height>
+    <width>200</width>
+    <height>200</height>
    </rect>
   </property>
   <property name="palette">
@@ -87,7 +87,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>850</width>
+     <width>200</width>
      <height>21</height>
     </rect>
    </property>
@@ -147,6 +147,9 @@
    <property name="text">
     <string>&amp;Playoff</string>
    </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
   </action>
   <action name="actionPreference_s">
    <property name="text">
@@ -198,6 +201,9 @@
   <action name="action_Match_Game">
    <property name="text">
     <string>&amp;Match Game</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+M</string>
    </property>
   </action>
  </widget>

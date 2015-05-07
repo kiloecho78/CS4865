@@ -9,6 +9,8 @@ class MatchGame:public Game
 {
     Pile *playOff[1];
     Pile *field[52];
+    Card *first = NULL;
+    Card *second = NULL;
 public:
     MatchGame(QWidget *par);
     QString GameName();

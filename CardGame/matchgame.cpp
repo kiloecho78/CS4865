@@ -49,6 +49,34 @@ void MatchGame::ReDeal(hardtype h)
 
 void MatchGame::OnFieldClick(Card *c)
 {
-
+    c->Flip();
+    if(first == NULL && second == NULL)
+    {
+        first = c;
+    }
+    else if (first != NULL && second == NULL)
+    {
+        if(first != c){
+            second = c;
+            if(first->Color() == second->Color()
+                    && first->Pip() == second->Pip())
+            {
+                first->Pilep()->move(570,640);
+                first->Move(playOff[0]);
+                second->Pilep()->move(570,640);
+                second->Move(playOff[0]);
+                first = NULL;
+                second = NULL;
+                CheckWin();
+            }
+        }
+    }
+    else
+    {
+        first->Flip();
+        second->Flip();
+        first = c;
+        second = NULL;
+    }
 }
 

@@ -58,7 +58,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;About Solitaire&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;This version of solitaire includes Klondike (the classic &lt;/p&gt;&lt;p&gt;game) and Freecell. The program was written by Keith &lt;/p&gt;&lt;p&gt;Everitt for Professor Roger Doering's CS4865 course for &lt;/p&gt;&lt;p&gt;the Spring semester 2015. All images are recreations of &lt;/p&gt;&lt;p&gt;images found on the web and the author makes no claims&lt;/p&gt;&lt;p&gt; to creating the images himself. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;About Solitaire&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;This version of solitaire includes Klondike (the classic game), &lt;/p&gt;&lt;p&gt;Freecell, and Match Game (or memory. The program was written&lt;/p&gt;&lt;p&gt;by Keith Everitt for Professor Roger Doering's CS4865 course for &lt;/p&gt;&lt;p&gt;the Spring semester 2015. All images are recreations of &lt;/p&gt;&lt;p&gt;images found on the web and the author makes no claims&lt;/p&gt;&lt;p&gt;to creating the images himself. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="scaledContents">
     <bool>false</bool>

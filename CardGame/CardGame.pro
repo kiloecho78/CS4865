@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     winningdialog.cpp \
     aboutdialog.cpp \
     help.cpp \
-    matchgame.cpp
+    matchgame.cpp \
+    preferencespage.cpp
 
 HEADERS  += gameboard.h \
     card.h \
@@ -37,12 +38,14 @@ HEADERS  += gameboard.h \
     winningdialog.h \
     aboutdialog.h \
     help.h \
-    matchgame.h
+    matchgame.h \
+    preferencespage.h
 
 FORMS    += gameboard.ui \
     aboutdialog.ui \
     help.ui \
-    winningdialog.ui
+    winningdialog.ui \
+    preferencespage.ui
 
 RESOURCES += \
     cards.qrc

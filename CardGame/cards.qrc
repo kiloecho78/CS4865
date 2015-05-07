@@ -54,5 +54,9 @@
         <file>cards/sd.bmp</file>
         <file>cards/zCardBack.bmp</file>
         <file>cards/CardIcon.ico</file>
+        <file>cards/zCardBackBicycle.bmp</file>
+        <file>cards/zCardBackFish.bmp</file>
+        <file>cards/zCardBackHot.bmp</file>
+        <file>cards/zCardBackHumanity.bmp</file>
     </qresource>
 </RCC>

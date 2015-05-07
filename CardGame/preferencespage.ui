@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PreferencesPage</class>
+ <widget class="QDialog" name="PreferencesPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>443</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>240</y>
+     <width>81</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>331</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Please Choose Your Prefered Card Back:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>431</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>GroupBox</string>
+   </property>
+   <widget class="QRadioButton" name="csuebButton">
+    <property name="geometry">
+     <rect>
+      <x>35</x>
+      <y>110</y>
+      <width>16</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="csuebPic">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>12</y>
+      <width>71</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/cards/zCardBack.bmp&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="bicycleButton">
+    <property name="geometry">
+     <rect>
+      <x>108</x>
+      <y>110</y>
+      <width>16</width>
+      <height>17</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="fishButton">
+    <property name="geometry">
+     <rect>
+      <x>179</x>
+      <y>110</y>
+      <width>16</width>
+      <height>17</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="hotButton">
+    <property name="geometry">
+     <rect>
+      <x>252</x>
+      <y>110</y>
+      <width>16</width>
+      <height>17</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="humanityButton">
+    <property name="geometry">
+     <rect>
+      <x>328</x>
+      <y>110</y>
+      <width>16</width>
+      <height>17</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bicyclePic">
+    <property name="geometry">
+     <rect>
+      <x>78</x>
+      <y>12</y>
+      <width>71</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/cards/zCardBackBicycle.bmp&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fishPic">
+    <property name="geometry">
+     <rect>
+      <x>151</x>
+      <y>12</y>
+      <width>71</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hotPic">
+    <property name="geometry">
+     <rect>
+      <x>224</x>
+      <y>12</y>
+      <width>71</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="humanPic">
+    <property name="geometry">
+     <rect>
+      <x>297</x>
+      <y>12</y>
+      <width>71</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>PreferencesPage</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>PreferencesPage</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
