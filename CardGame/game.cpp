@@ -34,7 +34,7 @@ void Game::CheckWin()
     if(allEmpty)
     {
         WinBox->show();
-//        CardMove::Clear();
+        Cardmove::Clear();
     }
 }
 

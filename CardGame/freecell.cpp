@@ -64,7 +64,27 @@ QString Freecell::GameName()
 
 void Freecell::OnFieldClick(Card *c)
 {
+    if(c)
+    {
+        for(int i = 0; i<4; i++)
+        {
+            if (!freeCell[i]->Top())
+            {
+                freeCell[i]->AcceptCards(c);
+                break;
+            }
+        }
+    }
+}
+
+void Freecell::OnFreeCellClick(Card *c)
+{
     if(c) PlayOff(c);
 }
 
+void Freecell::OnFieldDoubleClick(Card *c)
+{
+    if(c) PlayOff(c);
+
+}
 

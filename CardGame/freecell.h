@@ -17,6 +17,8 @@ public:
     void DealAction();
     QString GameName();
     void OnFieldClick(Card *c);
+    void OnFreeCellClick(Card *c);
+    void OnFieldDoubleClick(Card *c);
     int FreeMoves();
 };
 

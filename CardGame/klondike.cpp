@@ -89,7 +89,7 @@ void Klondike::DealAction()
             n++;
         }
     }
-//    if(n)new CardMove(n);
+    if(n)new Cardmove(n);
 }
 void Klondike::OnFieldClick(Card *c)
 {

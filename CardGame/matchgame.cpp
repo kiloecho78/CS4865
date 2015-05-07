@@ -30,9 +30,20 @@ void MatchGame::ReDeal(hardtype h)
     Shuffle(Deck, 52);
 
     playOff[0] = new PilePlayOff(820, 10, 0, 0, parent);
+    int k = 0;
+    for(int i=0; i<7; i++)
+    {
+        for(int j=0; j<8 && k<52; j++, k++)
+        {
+            field[i] = new PileField(10+80*j, 10+98*i, 0, 0, parent);
+        }
+    }
 
-    for(int i=0; i<52; i++)
-     {}   //field[i] = new PileField()
+    /*fix here
+     * for(int i=0; i<52; i++)
+    {
+        Deck[i]->Move(field[i]);
+    }*/
 }
 
 

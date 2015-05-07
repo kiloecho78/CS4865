@@ -15,6 +15,7 @@
 #include "winningdialog.h"
 #include "aboutdialog.h"
 #include "help.h"
+#include "matchgame.h"
 
 extern AboutDialog *About;
 extern Help *help;
@@ -48,7 +49,7 @@ void gameboard::on_action_Klondike_triggered()
     game = new Klondike(ui->centralWidget);
     qsrand(t.elapsed());
     game->ReDeal();
-//    CardMove::Clear();
+    Cardmove::Clear();
     setWindowTitle("Klondike");
 
 }
@@ -67,7 +68,7 @@ void gameboard::on_action_Freecell_triggered()
     game = new Freecell(ui->centralWidget);
     qsrand(t.elapsed());
     game->ReDeal();
-//  CardMove::Clear();
+    Cardmove::Clear();
     setWindowTitle("Freecell");
 }
 
@@ -85,7 +86,7 @@ void gameboard::on_actionPreference_s_triggered()
 
 void gameboard::on_action_Undo_triggered()
 {
-//    CardMove::UndoMove();
+    Cardmove::UndoMove();
 }
 
 void gameboard::on_actionRu_les_triggered()
@@ -103,9 +104,9 @@ void gameboard::on_action_Match_Game_triggered()
     if(game) delete game;
     resize(900,900);
     setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum));
-    //game = new MatchGame(ui->centralWidget);
+    game = new MatchGame(ui->centralWidget);
     qsrand(t.elapsed());
     game->ReDeal();
-//  CardMove::Clear();
+    Cardmove::Clear();
     setWindowTitle("Match Game");
 }

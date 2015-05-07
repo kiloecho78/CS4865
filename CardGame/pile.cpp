@@ -33,7 +33,7 @@ Pile::Pile(int x, int y,
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-    this->palette().setColor(0x10, BLACK);
+//    this->palette().setColor(0x10, BLACK);
     show();
 }
 
@@ -53,7 +53,7 @@ Pile::~Pile()
 void Pile::AcceptCards(Card* c, bool expose, bool record)
 {
     QPoint cardPosition;
-//    if(record) new CardMove(c, c->pile, this);
+    if(record) new Cardmove(c, c->pile, this);
     if(c->pile) //is the card in a pile now?
         c->pile->ReleaseCards(c, expose);
     if(top) //pile not empty
