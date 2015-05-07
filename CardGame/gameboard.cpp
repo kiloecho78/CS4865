@@ -5,22 +5,20 @@
 #include "freecell.h"
 #include "help.h"
 #include "aboutdialog.h"
+#include <QtGui>
+#include <QWidget>
+#include <QLabel>
+#include <QtUiTools/QtUiToolsDepends>
+#include "card.h"
+#include "pile.h"
+#include "cardmove.h"
+#include "winningdialog.h"
+#include "aboutdialog.h"
+#include "help.h"
 
 extern AboutDialog *About;
 extern Help *help;
-
-
-
-
-
-
-
-
-
-
-
-
-
+extern WinningDialog *win;
 //globals
 Game *game = NULL;
 
@@ -87,7 +85,7 @@ void gameboard::on_actionPreference_s_triggered()
 
 void gameboard::on_action_Undo_triggered()
 {
-
+//    CardMove::UndoMove();
 }
 
 void gameboard::on_actionRu_les_triggered()
@@ -102,5 +100,12 @@ void gameboard::on_action_About_triggered()
 
 void gameboard::on_action_Match_Game_triggered()
 {
-     //MatchGame::MatchGame(this);
+    if(game) delete game;
+    resize(900,900);
+    setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum));
+    //game = new MatchGame(ui->centralWidget);
+    qsrand(t.elapsed());
+    game->ReDeal();
+//  CardMove::Clear();
+    setWindowTitle("Match Game");
 }

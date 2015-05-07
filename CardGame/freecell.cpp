@@ -67,8 +67,4 @@ void Freecell::OnFieldClick(Card *c)
     if(c) PlayOff(c);
 }
 
-void Freecell::DealAction()
-{
-
-}
 

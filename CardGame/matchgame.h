@@ -1,18 +1,19 @@
 #ifndef MATCHGAME_H
 #define MATCHGAME_H
+#include "game.h"
 #include <QWidget>
 class Pile;
 
 
-class MatchGame
+class MatchGame:public Game
 {
-    Pile *playoff[1];
+    Pile *playOff[1];
     Pile *field[52];
 public:
     MatchGame(QWidget *par);
     QString GameName();
-    void DealAction();
-    //void OnFieldClick(Card*c);
+    void ReDeal(hardtype h);
+    void OnFieldClick(Card*c);
 };
 
 #endif // MATCHGAME_H

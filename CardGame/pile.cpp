@@ -33,7 +33,7 @@ Pile::Pile(int x, int y,
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-//    this->palette().setColor(0x10, BLACK);
+    this->palette().setColor(0x10, BLACK);
     show();
 }
 

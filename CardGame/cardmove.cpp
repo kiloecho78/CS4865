@@ -1,12 +1,23 @@
 #include "cardmove.h"
 
-Cardmove::Cardmove()
+
+
+Cardmove::Cardmove(Card *c, Pile *fr, Pile *t)
 {
 
 }
 
-Cardmove::~Cardmove()
+Cardmove::Cardmove(int n)
 {
 
 }
 
+void Cardmove::UndoMove()
+{
+
+}
+
+void Cardmove::Clear()
+{
+
+}
