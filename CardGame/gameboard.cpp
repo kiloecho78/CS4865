@@ -8,7 +8,7 @@
 #include <QtGui>
 #include <QWidget>
 #include <QLabel>
-#include <QtUiTools/QtUiToolsDepends>
+//#include <QtUiTools/QtUiToolsDepends>
 #include "card.h"
 #include "pile.h"
 #include "cardmove.h"
@@ -102,7 +102,7 @@ void gameboard::on_action_About_triggered()
 void gameboard::on_action_Match_Game_triggered()
 {
     if(game) delete game;
-    resize(900,900);
+    resize(660,795);
     setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum));
     game = new MatchGame(ui->centralWidget);
     qsrand(t.elapsed());
