@@ -481,9 +481,15 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="accessibleName">
+     <string>a</string>
+    </property>
     <property name="checked">
      <bool>true</bool>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">backsGroup</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="csuebPic">
     <property name="geometry">
@@ -507,6 +513,12 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="accessibleName">
+     <string>b</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">backsGroup</string>
+    </attribute>
    </widget>
    <widget class="QRadioButton" name="fishButton">
     <property name="geometry">
@@ -517,6 +529,12 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="accessibleName">
+     <string>c</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">backsGroup</string>
+    </attribute>
    </widget>
    <widget class="QRadioButton" name="hotButton">
     <property name="geometry">
@@ -527,6 +545,12 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="accessibleName">
+     <string>d</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">backsGroup</string>
+    </attribute>
    </widget>
    <widget class="QRadioButton" name="humanityButton">
     <property name="geometry">
@@ -537,6 +561,12 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="accessibleName">
+     <string>e</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">backsGroup</string>
+    </attribute>
    </widget>
    <widget class="QLabel" name="bicyclePic">
     <property name="geometry">
@@ -591,6 +621,19 @@
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="changeCards">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>170</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Change Cards</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -627,4 +670,7 @@
    </hints>
   </connection>
  </connections>
+ <buttongroups>
+  <buttongroup name="backsGroup"/>
+ </buttongroups>
 </ui>

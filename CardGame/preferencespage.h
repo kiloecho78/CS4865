@@ -15,6 +15,11 @@ public:
     explicit PreferencesPage(QWidget *parent = 0);
     ~PreferencesPage();
 
+private slots:
+
+
+    void on_changeCards_clicked();
+
 private:
     Ui::PreferencesPage *ui;
 };

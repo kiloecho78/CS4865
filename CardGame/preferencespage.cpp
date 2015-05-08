@@ -12,3 +12,11 @@ PreferencesPage::~PreferencesPage()
 {
     delete ui;
 }
+
+
+
+void PreferencesPage::on_changeCards_clicked()
+{
+    int theButton = ui->backsGroup->checkedId();
+
+}
