@@ -10,6 +10,7 @@ enum pips {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEE
 enum suits {CLUBS, DIAMONDS, HEARTS, SPADES};
 class Pile; //forward declaration
 
+
 class Card : public QLabel
 {
     Q_OBJECT
@@ -20,6 +21,7 @@ private:
     Card *under;
     Card *over;
     Pile *pile;
+
 
     cardColors color;
     pips pip;

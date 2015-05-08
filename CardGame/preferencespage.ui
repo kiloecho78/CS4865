@@ -630,6 +630,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+     <kerning>true</kerning>
+    </font>
+   </property>
    <property name="text">
     <string>Change Cards</string>
    </property>

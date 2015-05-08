@@ -5,6 +5,7 @@
 #include "gameboard.h"
 #include "game.h"
 #include <QtGlobal>
+#include <QString>
 
 
 QImage Card::faces[53]; // 0 is ACE of CLUBS; 51 is KING of SPADES; 52 is back of cards
@@ -71,7 +72,8 @@ void Card::Initialize()
             faces[n++]=QImage(fname);
         }
     }
-    faces[n]=QImage(":/cards/zCardBack.bmp");
+QString cardBacks;
+    faces[n]= QImage(*cardBacks);
 }
 
 void Card::Flip()
@@ -200,3 +202,4 @@ void Card::Playoff()
 {
     game->PlayOff(this);
 }
+
