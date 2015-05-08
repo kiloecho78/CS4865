@@ -15,6 +15,7 @@ class Card : public QLabel
 {
     Q_OBJECT
 private:
+//    static QString cardBacks;
     static QImage faces[53];
     static bool initialized;
     int value; //zero to 51
@@ -38,6 +39,8 @@ private:
     static Card* popUpCard;
 
 public:
+//    static void setBacks(QString s){cardBacks = s;}
+//    static QString getBacks();
     Card(int v, QWidget *parent =0);
     Card(pips p, suits s, QWidget *parent =0);
     suits Suit(){return suit;}

@@ -15,6 +15,9 @@ public:
     explicit WinningDialog(QWidget *parent = 0);
     ~WinningDialog();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::WinningDialog *ui;
 };

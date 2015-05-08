@@ -18,6 +18,8 @@ Card* Card::popUpCard;
 
 extern gameboard *MainApp;
 extern Game *game;
+//extern QString *cardBacks; attempted to use this to change the card back image
+
 
 Card::Card(int v, QWidget *parent):
     QLabel(parent), value(v), under(0), over(0),pile(0), faceup(false),
@@ -72,8 +74,8 @@ void Card::Initialize()
             faces[n++]=QImage(fname);
         }
     }
-QString cardBacks;
-    faces[n]= QImage(*cardBacks);
+
+    faces[n]= QImage(":/cards/zCardBackBicycle.bmp");
 }
 
 void Card::Flip()

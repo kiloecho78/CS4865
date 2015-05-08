@@ -11,6 +11,7 @@ WinningDialog *WinBox;
 AboutDialog *About;
 PreferencesPage *Prefs;
 Help *help;
+//QString *cardBacks;  An attempt to change card backs
 
 int main(int argc, char *argv[])
 {
@@ -20,11 +21,13 @@ int main(int argc, char *argv[])
     PreferencesPage pp;
     AboutDialog ad;
     Help hd;
+//    QString cb = QString(":/cards/zCardBack.bmp");
     MainApp = &w;
     WinBox = &wb;
     About = &ad;
     help = &hd;
     Prefs = &pp;
+//    cardBacks = &cb;
     w.show();
 
     return a.exec();
