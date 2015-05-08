@@ -12,6 +12,7 @@
 #include "card.h"
 #include "pile.h"
 #include "cardmove.h"
+#include "preferencespage.h"
 #include "winningdialog.h"
 #include "aboutdialog.h"
 #include "help.h"
@@ -20,6 +21,7 @@
 extern AboutDialog *About;
 extern Help *help;
 extern WinningDialog *win;
+extern PreferencesPage *Prefs;
 //globals
 Game *game = NULL;
 
@@ -81,7 +83,7 @@ void gameboard::on_action_Playoff_triggered()
 
 void gameboard::on_actionPreference_s_triggered()
 {
-
+    Prefs->show();
 }
 
 void gameboard::on_action_Undo_triggered()

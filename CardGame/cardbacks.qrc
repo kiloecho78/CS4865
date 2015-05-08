@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cards/zCardBackBicycle.bmp</file>
+        <file>cards/zCardBackCAH.bmp</file>
+        <file>cards/zCardBackFish.bmp</file>
+        <file>cards/zCardBackHot.bmp</file>
+    </qresource>
+</RCC>

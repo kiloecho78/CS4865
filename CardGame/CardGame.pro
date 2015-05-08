@@ -48,7 +48,8 @@ FORMS    += gameboard.ui \
     preferencespage.ui
 
 RESOURCES += \
-    cards.qrc
+    cards.qrc \
+    cardbacks.qrc
 
 QMAKE_CFLAGS_RELEASE +=
 QMAKE_CXXFLAGS_RELEASE +=
