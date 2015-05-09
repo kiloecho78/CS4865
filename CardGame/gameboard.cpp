@@ -8,7 +8,6 @@
 #include <QtGui>
 #include <QWidget>
 #include <QLabel>
-//#include <QtUiTools/QtUiToolsDepends>
 #include "card.h"
 #include "pile.h"
 #include "cardmove.h"
@@ -73,8 +72,6 @@ void gameboard::on_action_Freecell_triggered()
     Cardmove::Clear();
     setWindowTitle("Freecell");
 }
-
-
 
 void gameboard::on_action_Playoff_triggered()
 {

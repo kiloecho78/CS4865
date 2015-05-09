@@ -16,8 +16,6 @@ public:
     ~PreferencesPage();
 
 private slots:
-
-
     void on_changeCards_clicked();
 
 private:

@@ -32,11 +32,9 @@ public:
 
     bool Empty(){return !bottom;}
 
-    bool CanBeDragged(Card * c);//checks relavent rules for this pile
-    bool CanBeDropped(Card * c);//checks relavent rules for this pile
+    bool CanBeDragged(Card * c);
+    bool CanBeDropped(Card * c);
     void FindClosestDrop(Card *c);
-
-
 
     void Deal(QMouseEvent *ev);
     void AddDropRules(int n ...);
@@ -51,18 +49,7 @@ public:
     void mouseReleaseEvent(QMouseEvent *ev);
     virtual void OnClickEvent(Card *c){}
     virtual void mouseDoubleClickEvent(Card *c){}
-/*
-
-
-
-left blank
-
-
-
-*/
 };
-
-
 
 class PileDeal:public Pile
 {
@@ -118,7 +105,6 @@ public:
     Rule* DropRule(int i);
     void DropRule(int i, Rule* r);
     void OnClickEvent(Card* c);
-//    void mouseDoubleClickEvent(Card *c);
     pileType Type(){return FREE_CELL;}
 };
 
@@ -133,7 +119,6 @@ public:
     Rule* DropRule(int i);
     void DropRule(int i, Rule* r);
     void OnClickEvent(Card* c);
-//    void mouseDoubleClickEvent(Card *c);
     pileType Type(){return DEALT;}
 };
 #endif // PILE_H

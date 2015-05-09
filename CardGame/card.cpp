@@ -1,4 +1,3 @@
-
 #include "card.h"
 #include "pile.h"
 #include <QMouseEvent>
@@ -7,10 +6,9 @@
 #include <QtGlobal>
 #include <QString>
 
-
-QImage Card::faces[53]; // 0 is ACE of CLUBS; 51 is KING of SPADES; 52 is back of cards
-bool Card::initialized = false;//true if faces is initialized
-QPoint Card::mouseDownOffset;//initialized on mouse down event
+QImage Card::faces[53];
+bool Card::initialized = false;
+QPoint Card::mouseDownOffset;
 QPoint Card::startDragPos;
 Qt::MouseButtons Card::buttonDown;
 QPoint Card::popUpPos;
@@ -18,8 +16,6 @@ Card* Card::popUpCard;
 
 extern gameboard *MainApp;
 extern Game *game;
-//extern QString *cardBacks; attempted to use this to change the card back image
-
 
 Card::Card(int v, QWidget *parent):
     QLabel(parent), value(v), under(0), over(0),pile(0), faceup(false),
@@ -49,14 +45,11 @@ Card::Card(pips p, suits s, QWidget *parent):
 QSize Card::sizeHint() const
 {return QSize(71,96);}
 
-//Used for dealing
 void Card::Move(Pile* to, bool expose)
 {
     to->AcceptCards(this, expose, false);
 }
 
-//Called by main GameBoard Constructor to initialize all card pictures in
-//static array
 void Card::Initialize()
 {
     if(initialized) return;
@@ -75,7 +68,23 @@ void Card::Initialize()
         }
     }
 
-    faces[n]= QImage(":/cards/zCardBackBicycle.bmp");
+    faces[n]= QImage(":/cards/zCardBack.bmp");
+}
+
+void Card::SetBacks(int x)
+{
+    if(x == 4)
+        faces[52]= QImage(":/cards/zCardBackBicycle.bmp");
+    else if(x == 1)
+        faces[52]= QImage(":/cards/zCardBackCAH.bmp");
+
+    else if(x == 2)
+        faces[52]= QImage(":/cards/zCardBackFish.bmp");
+    else if(x == 3)
+        faces[52]= QImage(":/cards/zCardBackHot.bmp");
+    else
+        faces[52]= QImage(":/cards/zCardBack.bmp");
+    game->ReDeal();
 }
 
 void Card::Flip()
@@ -102,7 +111,7 @@ void Shuffle(Card *Deck[], int n)
         temp->raise();
     }
 }
-//---
+
 void Card::mousePressEvent(QMouseEvent *ev)
 {
     switch (ev->button())
@@ -126,7 +135,6 @@ void Card::mouseMoveEvent(QMouseEvent *event)
     QPoint point = event->globalPos() + mouseDownOffset;
     QPoint moved = point - pos();
     if (okToDrag && moved.manhattanLength() > 4)
-        //the mouse has moved more than 4 pixels since
         moving = true;
     if (moving)
         AdjustPositions(point, pile?pile->Delta():QPoint(0, 10));
@@ -137,7 +145,7 @@ void Card::mouseReleaseEvent(QMouseEvent *ev)
     if(ev->buttons())return;
     if(popUpCard)
     {
-        popUpCard->move(popUpPos); //restore card position
+        popUpCard->move(popUpPos);
         popUpCard = NULL;
         return;
     }
@@ -176,11 +184,6 @@ void Card::AlignWithPile()
     move(pile->pos());
 }
 
-/*void Card::Animate(QPoint newpos)
-{
-
-}*/
-
 int Card::StackSize()
 {
     int count = 0;
@@ -192,13 +195,13 @@ int Card::StackSize()
     }while(card);
     return count;
 }
+
 void Card::mouseDoubleClickEvent(QMouseEvent *)
 {
     if(pile)
         pile->mouseDoubleClickEvent(this);
 
 }
-
 
 void Card::Playoff()
 {

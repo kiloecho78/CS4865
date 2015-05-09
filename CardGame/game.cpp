@@ -4,7 +4,6 @@
 #include "winningdialog.h"
 #include "cardmove.h"
 
-
 extern WinningDialog *WinBox;
 
 Game::Game(QWidget *par)

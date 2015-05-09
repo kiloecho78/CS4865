@@ -9,8 +9,8 @@ class Cardmove
     Card *card;
     Pile *from;
     Pile *to;
-    int count;//:16;
-    bool wasFaceUp;//:16;
+    int count;//:16;doesn't work on my machines
+    bool wasFaceUp;//:16; doesn't work on my machines
     static QStack<Cardmove*> undostack;
 public:
     Cardmove(Card *c, Pile *fr, Pile *t);

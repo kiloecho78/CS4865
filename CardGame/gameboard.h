@@ -7,11 +7,6 @@
 #include "pile.h"
 #include "card.h"
 
-
-
-
-
-
 namespace Ui {
 class gameboard;
 }
@@ -47,7 +42,6 @@ private:
     void DealFreeCell();
     void CleanUp();
     Card *deck[104];
-
 
 public:
     bool Deal3(){return true;}

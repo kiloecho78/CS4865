@@ -7,7 +7,6 @@ extern gameboard *MainApp;
 extern Game *game;
 extern QList<Pile*> piles;
 
-//static member data
 Rule *PileDeal::dragRules[DRAGLAST];
 Rule *PileDeal::dropRules[DROPLAST];
 
@@ -22,7 +21,7 @@ Rule *PileFreeCell::dropRules[DROPLAST];
 
 Rule *PileDealt::dragRules[DRAGLAST];
 Rule *PileDealt::dropRules[DROPLAST];
-//constructor
+
 Pile::Pile(int x, int y,
            int dx, int dy,
            QWidget *parent):
@@ -33,7 +32,6 @@ Pile::Pile(int x, int y,
     resize(71,96);
     setFrameShape(Box);
     setLineWidth(2);
-//    this->palette().setColor(0x10, BLACK);
     show();
 }
 
@@ -86,20 +84,7 @@ void Pile::ReleaseCards(Card *c, bool expose)
         }
     }
 }
-/*
 
-
-
-
-nothing here
-
-
-
-
-
-
-
-*/
 void Pile::AddDropRules(int n ...)
 {
     va_list lp;
@@ -116,8 +101,6 @@ void Pile::AddDragRules(int n ...)
 {
     va_list lp;
     va_start(lp, n);
-
-
     int i=0;
     while(i<n)
         DragRule(i++, va_arg(lp, Rule*));
@@ -125,7 +108,6 @@ void Pile::AddDragRules(int n ...)
     va_end(lp);
 }
 
-//Checks the rules to see if a card or stack can be dropped
 bool Pile::CanBeDropped(Card *c)
 {
     int i = 0;
@@ -135,8 +117,6 @@ bool Pile::CanBeDropped(Card *c)
     return ok;
 }
 
-
-//Checks to see if a card or card & stack above can be removed from pile
 bool Pile::CanBeDragged(Card *c)
 {
     int i = 0;
@@ -145,29 +125,7 @@ bool Pile::CanBeDragged(Card *c)
         ok = DragRule(i++)->Enforce(this, c);
     return ok;
 }
-/*
 
-
-
-
-
-
-
-
-
-
-Probably a removed function
-Unknown check to see if something is missing
-
-
-
-
-
-
-
-
-
-*/
 void Pile::FindClosestDrop(Card *c)
 {
     const int NUM=3;
@@ -208,21 +166,9 @@ void Pile::mouseReleaseEvent(QMouseEvent *ev)
 {
     OnClickEvent(NULL);
 }
-/*
 
-
-
-
-left blank intentionally
-
-
-
-
-
-*/
 PileField::PileField(int x, int y, int dx, int dy, QWidget *parent):
-    Pile(x, y, dx, dy, parent)
-{}
+    Pile(x, y, dx, dy, parent){}
 Rule* PileField::DragRule(int i)
     {return dragRules[i];}
 void PileField::DragRule(int i, Rule *r)
@@ -236,10 +182,8 @@ void PileField::OnClickEvent(Card *c)
 void PileField::mouseDoubleClickEvent(Card *c)
 {game->OnFieldDoubleClick(c);}
 
-PilePlayOff::PilePlayOff(int x, int y, int dx, int dy,
-                         QWidget *parent):
-    Pile(x,y,dx,dy,parent)
-{}
+PilePlayOff::PilePlayOff(int x, int y, int dx, int dy, QWidget *parent):
+    Pile(x,y,dx,dy,parent){}
 Rule* PilePlayOff::DragRule(int i)
     {return dragRules[i];}
 void PilePlayOff::DragRule(int i, Rule *r)
@@ -249,11 +193,8 @@ Rule*PilePlayOff::DropRule(int i)
 void PilePlayOff::DropRule(int i, Rule *r)
 {dropRules[i]=r;}
 
-
-PileDeal::PileDeal(int x, int y, int dx, int dy,
-                   QWidget *parent):
-    Pile(x,y,dx,dy,parent)
-{}
+PileDeal::PileDeal(int x, int y, int dx, int dy, QWidget *parent):
+    Pile(x,y,dx,dy,parent){}
 Rule* PileDeal::DragRule(int i)
     {return dragRules[i];}
 void PileDeal::DragRule(int i, Rule *r)
@@ -265,10 +206,8 @@ void PileDeal::DropRule(int i, Rule *r)
 void PileDeal::OnClickEvent(Card *c)
 {game->OnDealClick(c);}
 
-PileDealt::PileDealt(int x, int y, int dx, int dy,
-                     QWidget *parent):
-    Pile(x,y,dx,dy,parent)
-{}
+PileDealt::PileDealt(int x, int y, int dx, int dy,QWidget *parent):
+    Pile(x,y,dx,dy,parent){}
 Rule* PileDealt::DragRule(int i)
     {return dragRules[i];}
 void PileDealt::DragRule(int i, Rule *r)
@@ -280,10 +219,8 @@ void PileDealt::DropRule(int i, Rule *r)
 void PileDealt::OnClickEvent(Card *c)
 {game->OnDealtClick(c);}
 
-PileFreeCell::PileFreeCell(int x, int y, int dx, int dy,
-                           QWidget *parent):
-    Pile(x,y,dx,dy,parent)
-{}
+PileFreeCell::PileFreeCell(int x, int y, int dx, int dy, QWidget *parent):
+    Pile(x,y,dx,dy,parent){}
 Rule* PileFreeCell::DragRule(int i)
     {return dragRules[i];}
 void PileFreeCell::DragRule(int i, Rule *r)

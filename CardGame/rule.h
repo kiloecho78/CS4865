@@ -1,7 +1,6 @@
 #ifndef RULE_H
 #define RULE_H
 
-
 class Pile;
 class Card;
 class Rule
@@ -14,11 +13,6 @@ class RuleBaseNone:public Rule
 {
     bool Enforce(Pile *p, Card *c);
 };
-
-
-
-
-
 
 class RuleBaseAce:public Rule
 {
@@ -35,7 +29,7 @@ class RuleNoStack:public Rule
     bool Enforce(Pile *p, Card *c);
 };
 
-class  RuleStackSameSuit:public Rule //Drop Rules have stack
+class  RuleStackSameSuit:public Rule
 {
     bool Enforce(Pile *p, Card *c);
 };
@@ -70,7 +64,7 @@ class  RuleStack13:public Rule //only for spider
     bool Enforce(Pile *p, Card *c);
 };
 
-class  RuleStackLengthLimited:public Rule //freecell, can only move #cards that can be moved
+class  RuleStackLengthLimited:public Rule
 {
     bool Enforce(Pile *p, Card *c);
 };

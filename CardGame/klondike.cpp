@@ -20,12 +20,10 @@ QString Klondike::GameName()
 void Klondike::ReDeal(hardtype h)
 {
     Clear();
-    // create and shuffle deck;
     Card* Deck[52];
     for(int i = 0; i<52; i++)
-        Deck[i] = new Card(i, parent); //create facedown
+        Deck[i] = new Card(i, parent);
     Shuffle(Deck,52);
-    //now create board layout.
     for(int i=0; i<4; i++)
 
         playOff[i]= new PilePlayOff(266+82*i, 10,0,0,parent);
@@ -53,7 +51,6 @@ void Klondike::ReDeal(hardtype h)
                         new RuleBaseNone(),
                         new RuleNoStack());
     dealt->AddDragRules(1,new RuleMoveOneAtATime());
-    //now deal the cards
     int i=0;
     for(int pass=0;pass<7;pass++)
         for(int pile = pass; pile < 7; pile++)
@@ -81,7 +78,7 @@ void Klondike::DealAction()
             if(deal->Top()){dealt->AcceptCards(deal->Top(),true, true); n++;}
             if(deal->Top()){dealt->AcceptCards(deal->Top(), false, true);n++;}
         }
-    }else{//no cards left to deal means recycle the dealt pile
+    }else{
         while(dealt->Top())
         {
             dealt->Top()->Faceup(false);

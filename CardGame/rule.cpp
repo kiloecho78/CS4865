@@ -13,12 +13,6 @@ Enforce(Pile *p, Card *c)
     return false;
 }
 
-
-
-
-
-
-
 bool RuleBaseAce::
 Enforce(Pile *p, Card *c)
 {

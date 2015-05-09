@@ -13,12 +13,12 @@ protected:
     QList<Pile*> piles;
 public:
     Game(QWidget *par);
-    virtual ~Game();//
-    void Clear();//
-    virtual void CheckWin();//
-    void AddPile(Pile *p);//
-    virtual int FreeMoves(){return 0;}//calculates//
-    virtual void ReDeal(hardtype h = REPEAT) = 0;//
+    virtual ~Game();
+    void Clear();
+    virtual void CheckWin();
+    void AddPile(Pile *p);
+    virtual int FreeMoves(){return 0;}
+    virtual void ReDeal(hardtype h = REPEAT) = 0;
     virtual bool PlayOff(Card* c);
     virtual void PlayOffAll();
     virtual void OnFieldDoubleClick(Card* c){}
@@ -30,5 +30,4 @@ public:
     friend class Pile;
 };
 
-//piles created after the cards
 #endif // GAME_H
