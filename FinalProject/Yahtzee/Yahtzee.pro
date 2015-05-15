@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        gamewindow.cpp
+        gamewindow.cpp \
+    die.cpp
 
-HEADERS  += gamewindow.h
+HEADERS  += gamewindow.h \
+    die.h
 
 FORMS    += gamewindow.ui
