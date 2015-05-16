@@ -86,36 +86,36 @@
               <number>2</number>
              </property>
              <item>
-              <widget class="Die" name="die1">
-               <property name="text">
+              <widget class="Die" name="die1" native="true">
+               <property name="text" stdset="0">
                 <string>1</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="Die" name="die2">
-               <property name="text">
+              <widget class="Die" name="die2" native="true">
+               <property name="text" stdset="0">
                 <string>2</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="Die" name="die3">
-               <property name="text">
+              <widget class="Die" name="die3" native="true">
+               <property name="text" stdset="0">
                 <string>3</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="Die" name="die4">
-               <property name="text">
+              <widget class="Die" name="die4" native="true">
+               <property name="text" stdset="0">
                 <string>4</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="Die" name="die5">
-               <property name="text">
+              <widget class="Die" name="die5" native="true">
+               <property name="text" stdset="0">
                 <string>5</string>
                </property>
               </widget>
@@ -240,9 +240,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>die</class>
-   <extends>QLabel</extends>
-   <header location="global">die.h</header>
+   <class>Die</class>
+   <extends>QWidget</extends>
+   <header>die.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

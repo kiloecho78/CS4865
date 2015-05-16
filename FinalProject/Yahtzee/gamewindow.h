@@ -15,12 +15,13 @@ class GameWindow : public QMainWindow
 
 public:
     explicit GameWindow(QWidget *parent = 0);
+    void resizeEvent(QResizeEvent * event);
     ~GameWindow();
-    void
+
 
 private:
     Ui::GameWindow *ui;
-    Die *dice[5];
+    Die *diceSet[5];
 };
 
 #endif // GAMEWINDOW_H
