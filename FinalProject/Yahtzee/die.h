@@ -12,12 +12,14 @@ private:
     bool held;
     int pos;
 public:
-    Die(QWidget *parent=0);
+    Die(QWidget *parent);
     ~Die();
     void paintEvent(QPaintEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
     void setPos(int p);
     void createSet();
+    friend class GameWindow;
+    
 };
 
 #endif // DIE_H
