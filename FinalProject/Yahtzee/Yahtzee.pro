@@ -20,3 +20,9 @@ HEADERS  += gamewindow.h \
     die.h
 
 FORMS    += gamewindow.ui
+
+RESOURCES += \
+    sheetdie.qrc \
+    icon.qrc
+
+DISTFILES +=

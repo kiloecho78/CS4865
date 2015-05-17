@@ -29,7 +29,7 @@ void Die::setPos(int p)
 void Die::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    //resize(70*scale, 70*scale);
+    resize(70*scale, 70*scale);
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(dieEdgeColor);
     p.setBrush(dieCenterColor);
