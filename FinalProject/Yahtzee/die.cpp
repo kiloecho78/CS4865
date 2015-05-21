@@ -29,14 +29,14 @@ void Die::setPos(int p)
 void Die::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    resize(70*scale, 70*scale);
+    resize(50*scale, 50*scale);
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(dieEdgeColor);
     p.setBrush(dieCenterColor);
     p.scale(scale,scale);
     //const int top = 204;
-    p.drawRect(0,0,28,28);
+    p.drawRect(0,0,50,50);
     p.setBrush(dieEdgeColor);
-    p.drawEllipse(QPointF(14,14), 3, 3);
+    p.drawEllipse(QPointF(25,25), 5, 5);
 }
 

@@ -3,6 +3,8 @@
 
 #include "die.h"
 #include <QTime>
+#include<QLineEdit>
+#include <QPushButton>
 #include <QMainWindow>
 
 namespace Ui {
@@ -17,6 +19,18 @@ private:
     Ui::GameWindow *ui;
     Die *diceSet[5];
     QTime t;
+    QPushButton *die1;
+    QPushButton *die2;
+    QPushButton *die3;
+    QPushButton *die4;
+    QPushButton *die5;
+    QPushButton *rollButton;
+    QPushButton *endTurn;
+    QLineEdit *dice1;
+    QLineEdit *dice2;
+    QLineEdit *dice3;
+    QLineEdit *dice4;
+    QLineEdit *dice5;
 
 public:
     explicit GameWindow(QWidget *parent = 0);
