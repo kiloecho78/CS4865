@@ -14,10 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gamewindow.cpp \
-    die.cpp
+    die.cpp \
+    scorecard.cpp \
+    player.cpp \
+    scorecardlayout.cpp
 
 HEADERS  += gamewindow.h \
-    die.h
+    die.h \
+    scorecard.h \
+    player.h \
+    scorecardlayout.h
 
 FORMS    += gamewindow.ui
 
