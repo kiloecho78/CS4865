@@ -9,6 +9,7 @@ class Player
 private:
     QString name;
     Scorecard myScore;
+    bool turn;
 
 
 public:

@@ -60,6 +60,51 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(endTurn,SIGNAL(clicked()),this,SLOT(on_endTurn_clicked()));
     ui->diceGridLayout->addWidget(rollButton,2,2,Qt::AlignCenter);
     ui->diceGridLayout->addWidget(endTurn,2,4,Qt::AlignCenter);
+    gameColHeader = new QLabel(QString("Yahtzee!"));
+    QFont f("Arial", 28, QFont::Bold);
+    gameColHeader->setFont(f);
+    ui->scorecardLayout->addWidget(gameColHeader,0,0);
+    ui->scorecardLayout->addWidget(playerNameColHeader = new QLabel(QString("Amy")),0,2);
+    ui->scorecardLayout->addWidget(one = new QLabel(QString("Aces")),1,0);
+    ui->scorecardLayout->addWidget(two = new QLabel(QString("Twos")),2,0);
+    ui->scorecardLayout->addWidget(three = new QLabel(QString("Threes")),3,0);
+    ui->scorecardLayout->addWidget(four = new QLabel(QString("Fours")),4,0);
+    ui->scorecardLayout->addWidget(five = new QLabel(QString("Fives")),5,0);
+    ui->scorecardLayout->addWidget(six = new QLabel(QString("Sixes")),6,0);
+    ui->scorecardLayout->addWidget(topSubTotal = new QLabel(QString("TOTAL SCORE")),7,0);
+    ui->scorecardLayout->addWidget(bonus = new QLabel(QString("BONUS if total score is 63 or more")),8,0);
+    ui->scorecardLayout->addWidget(topGrandTotal = new QLabel(QString("TOTAL of Upper Section")),9,0);
+    ui->scorecardLayout->addWidget(toak = new QLabel(QString("Three of a Kind")),10,0);
+    ui->scorecardLayout->addWidget(foak = new QLabel(QString("Four of a Kind")),11,0);
+    ui->scorecardLayout->addWidget(fh = new QLabel(QString("Full House")),12,0);
+    ui->scorecardLayout->addWidget(sms  = new QLabel(QString("Small Straight")),13,0);
+    ui->scorecardLayout->addWidget(lgs = new QLabel(QString("Large Straight")),14,0);
+    ui->scorecardLayout->addWidget(chance = new QLabel(QString("Chance")),15,0);
+    ui->scorecardLayout->addWidget(yahtzee = new QLabel(QString("YAHTZEE")),16,0);
+    ui->scorecardLayout->addWidget(bottomSubTotal = new QLabel(QString("TOTAL of Lower Section")),17,0);
+    ui->scorecardLayout->addWidget(topGrandTotal2 = new QLabel(QString("TOTAL of Upper Section")),18,0);
+    ui->scorecardLayout->addWidget(grandTotal = new QLabel(QString("GRAND TOTAL")),19,0);
+    ui->scorecardLayout->addWidget(oneScore = new QPushButton(),1,2);
+    ui->scorecardLayout->addWidget(twoScore = new QPushButton(),2,2);
+    ui->scorecardLayout->addWidget(threeScore = new QPushButton(),3,2);
+    ui->scorecardLayout->addWidget(fourScore = new QPushButton(),4,2);
+    ui->scorecardLayout->addWidget(fiveScore = new QPushButton(),5,2);
+    ui->scorecardLayout->addWidget(sixScore = new QPushButton(),6,2);
+    ui->scorecardLayout->addWidget(topSubTotalScore = new QLabel(),7,2);
+    ui->scorecardLayout->addWidget(bonusScore  = new QLabel(),8,2);
+    ui->scorecardLayout->addWidget(topGrandTotalScore = new QLabel(),9,2);
+    ui->scorecardLayout->addWidget(threeOfAKindScore = new QPushButton(),10,2);
+    ui->scorecardLayout->addWidget(fourOfAKindScore = new QPushButton(),11,2);
+    ui->scorecardLayout->addWidget(fullHouseScore = new QPushButton(),12,2);
+    ui->scorecardLayout->addWidget(smStraightScore = new QPushButton(),13,2);
+    ui->scorecardLayout->addWidget(lgStraightScore = new QPushButton(),14,2);
+    ui->scorecardLayout->addWidget(chanceScore = new QPushButton(),15,2);
+    ui->scorecardLayout->addWidget(yahtzeeScore = new QPushButton(),16,2);
+    ui->scorecardLayout->addWidget(bottomSubTotalScore = new QLabel(),17,2);
+    ui->scorecardLayout->addWidget(topGrandTotal2Score = new QLabel(),18,2);
+    ui->scorecardLayout->addWidget(grandTotalScore = new QLabel(),19,2);
+    setUpScoreButtonArray();
+    setUpScoreLabelArray();
 
 
 }
@@ -118,4 +163,14 @@ void GameWindow::on_rollButton_clicked()
     for(int i = 0; i<5; i++)
         diceSet[i]->value = (qrand() % 6)+1;
     showDice();
+}
+
+void GameWindow::setUpScoreButtonArray()
+{
+
+}
+
+void GameWindow::setUpScoreLabelArray()
+{
+
 }

@@ -16,14 +16,12 @@ SOURCES += main.cpp\
         gamewindow.cpp \
     die.cpp \
     scorecard.cpp \
-    player.cpp \
-    scorecardlayout.cpp
+    player.cpp
 
 HEADERS  += gamewindow.h \
     die.h \
     scorecard.h \
-    player.h \
-    scorecardlayout.h
+    player.h
 
 FORMS    += gamewindow.ui
 
