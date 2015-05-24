@@ -91,6 +91,7 @@ public:
     void checkTopComplete();
     void checkBottomComplete();
     void finalScore();
+    void createSet();
 
 private slots:
     void on_endTurn_clicked();
@@ -108,6 +109,11 @@ private slots:
     void on_lgsScore_clicked();
     void on_chanceScore_clicked();
     void on_yahtzeeScore_clicked();
+    void on_die1_clicked();
+    void on_die2_clicked();
+    void on_die3_clicked();
+    void on_die4_clicked();
+    void on_die5_clicked();
 };
 
 #endif // GAMEWINDOW_H

@@ -14,34 +14,35 @@ GameWindow::GameWindow(QWidget *parent) :
     die1 = new QPushButton();
     die1->setMinimumSize(50,50);
     die1->setMaximumSize(50,50);
-    die1->setFlat(true);
+    //die1->setFlat(true);
     ui->diceGridLayout->addWidget(die1,1,0,Qt::AlignCenter);
 
     die2 = new QPushButton();
     die2->setMinimumSize(50,50);
     die2->setMaximumSize(50,50);
-    die2->setFlat(true);
+    //die2->setFlat(true);
     ui->diceGridLayout->addWidget(die2,1,1,Qt::AlignCenter);
     die3 = new QPushButton();
     die3->setMinimumSize(50,50);
     die3->setMaximumSize(50,50);
-    die3->setFlat(true);
+    //die3->setFlat(true);
     ui->diceGridLayout->addWidget(die3,1,2,Qt::AlignCenter);
     die4 = new QPushButton();
     die4->setMinimumSize(50,50);
     die4->setMaximumSize(50,50);
-    die4->setFlat(true);
+    //die4->setFlat(true);
     ui->diceGridLayout->addWidget(die4,1,3,Qt::AlignCenter);
     die5 = new QPushButton();
     die5->setMinimumSize(50,50);
     die5->setMaximumSize(50,50);
-    die5->setFlat(true);
+    //die5->setFlat(true);
     ui->diceGridLayout->addWidget(die5,1,4,Qt::AlignCenter);
     diceSet[0] = new Die(die1);
     diceSet[1] = new Die(die2);
     diceSet[2] = new Die(die3);
     diceSet[3] = new Die(die4);
     diceSet[4] = new Die(die5);
+    createSet();
     dice1 = new QLineEdit();
     dice2 = new QLineEdit();
     dice3 = new QLineEdit();
@@ -176,8 +177,11 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(on_lgsScore_clicked()));
     connect(chanceScore,SIGNAL(clicked()),this,SLOT(on_chanceScore_clicked()));
     connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(on_yahtzeeScore_clicked()));
-
-
+    connect(die1,SIGNAL(clicked()),this,SLOT(on_die1_clicked()));
+    connect(die2,SIGNAL(clicked()),this,SLOT(on_die2_clicked()));
+    connect(die3,SIGNAL(clicked()),this,SLOT(on_die3_clicked()));
+    connect(die4,SIGNAL(clicked()),this,SLOT(on_die4_clicked()));
+    connect(die5,SIGNAL(clicked()),this,SLOT(on_die5_clicked()));
 }
 
 void GameWindow::resizeEvent(QResizeEvent *event)
@@ -208,11 +212,10 @@ void GameWindow::sortDice()
 
 void GameWindow::showDice()
 {
-    dice1->setText(QString::number(diceSet[0]->value));
-    dice2->setText(QString::number(diceSet[1]->value));
-    dice3->setText(QString::number(diceSet[2]->value));
-    dice4->setText(QString::number(diceSet[3]->value));
-    dice5->setText(QString::number(diceSet[4]->value));
+    for(int i = 0; i<6; i++)
+    {
+        diceSet[i]->repaint();
+    }
 }
 
 void GameWindow::on_endTurn_clicked()
@@ -232,7 +235,8 @@ void GameWindow::on_rollButton_clicked()
 {
     qsrand(t.elapsed());
     for(int i = 0; i<5; i++)
-        diceSet[i]->value = (qrand() % 6)+1;
+        if(!diceSet[i]->held)
+            diceSet[i]->value = (qrand() % 6)+1;
     showDice();
 }
 
@@ -335,6 +339,15 @@ void GameWindow::finalScore()
     else
     {
         return;
+    }
+}
+
+void GameWindow::createSet()
+{
+    for(int i =0; i<5; i++)
+    {
+        diceSet[i]->held = false;
+        diceSet[i]->setEnabled(true);
     }
 }
 
@@ -546,4 +559,31 @@ void GameWindow::on_yahtzeeScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     yahtzeeScore->setEnabled(false);
     checkBottomComplete();
+}
+
+void GameWindow::on_die1_clicked()
+{
+    diceSet[0]->held = (!diceSet[0]->held);
+    die1->repaint();
+}
+
+void GameWindow::on_die2_clicked()
+{
+    diceSet[1]->held = (!diceSet[1]->held);
+    die2->repaint();
+}
+void GameWindow::on_die3_clicked()
+{
+    diceSet[2]->held = (!diceSet[2]->held);
+    die3->repaint();
+}
+void GameWindow::on_die4_clicked()
+{
+    diceSet[3]->held = (!diceSet[3]->held);
+    die4->repaint();
+}
+void GameWindow::on_die5_clicked()
+{
+    diceSet[4]->held = (!diceSet[4]->held);
+    die5->repaint();
 }

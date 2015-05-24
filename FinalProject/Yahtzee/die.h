@@ -10,14 +10,11 @@ class Die: public QLabel
 private:
     int value;
     bool held;
-    int pos;
 public:
     Die(QWidget *parent);
     ~Die();
     void paintEvent(QPaintEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
-    void setPos(int p);
-    void createSet();
     friend class GameWindow;
     
 };
