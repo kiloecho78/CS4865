@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>688</height>
+    <height>702</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -88,7 +88,7 @@
       <x>0</x>
       <y>140</y>
       <width>371</width>
-      <height>501</height>
+      <height>521</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="playersGridLayout"/>
@@ -222,7 +222,7 @@
       <x>369</x>
       <y>-1</y>
       <width>371</width>
-      <height>641</height>
+      <height>661</height>
      </rect>
     </property>
     <property name="palette">
@@ -240,9 +240,9 @@
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>170</green>
-          <blue>0</blue>
+          <red>213</red>
+          <green>213</green>
+          <blue>160</blue>
          </color>
         </brush>
        </colorrole>
@@ -260,9 +260,9 @@
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>170</green>
-          <blue>0</blue>
+          <red>213</red>
+          <green>213</green>
+          <blue>160</blue>
          </color>
         </brush>
        </colorrole>
@@ -271,18 +271,18 @@
        <colorrole role="Base">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>170</green>
-          <blue>0</blue>
+          <red>213</red>
+          <green>213</green>
+          <blue>160</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>170</green>
-          <blue>0</blue>
+          <red>213</red>
+          <green>213</green>
+          <blue>160</blue>
          </color>
         </brush>
        </colorrole>
@@ -307,7 +307,7 @@
        <x>8</x>
        <y>8</y>
        <width>351</width>
-       <height>631</height>
+       <height>641</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="scorecardLayout"/>

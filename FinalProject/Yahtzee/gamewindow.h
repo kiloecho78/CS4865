@@ -46,19 +46,10 @@ private:
     QPushButton *lgStraightScore;
     QPushButton *chanceScore;
     QPushButton *yahtzeeScore;
-    bool oneScoreSet = false;
-    bool twoScoreSet = false;
-    bool threeScoreSet = false;
-    bool fourScoreSet = false;
-    bool fiveScoreSet = false;
-    bool sixScoreSet = false;
-    bool threeOfAKindScoreSet = false;
-    bool fourOfAKindScoreSet = false;
-    bool fullHouseScoreSet = false;
-    bool smStraightScoreSet = false;
-    bool lgStraightScoreSet = false;
-    bool chanceScoreSet = false;
-    bool yahtzeeScoreSet = false;
+    bool topScoreSetArray[6];
+    bool bottomScoreSetArray[7];
+    int sectionsCompleted = 0;
+
     QLabel *one;
     QLabel *two;
     QLabel *three;
@@ -95,6 +86,11 @@ public:
     void showDice();
     void setUpScoreButtonArray();
     void setUpScoreLabelArray();
+    bool goFish(int x);
+    bool checkSmallStraight();
+    void checkTopComplete();
+    void checkBottomComplete();
+    void finalScore();
 
 private slots:
     void on_endTurn_clicked();

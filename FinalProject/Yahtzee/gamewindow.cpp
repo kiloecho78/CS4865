@@ -74,7 +74,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->scorecardLayout->addWidget(five = new QLabel(QString("Fives")),5,0);
     ui->scorecardLayout->addWidget(six = new QLabel(QString("Sixes")),6,0);
     ui->scorecardLayout->addWidget(topSubTotal = new QLabel(QString("TOTAL SCORE")),7,0);
-    ui->scorecardLayout->addWidget(bonus = new QLabel(QString("BONUS if total score is 63 or more")),8,0);
+    ui->scorecardLayout->addWidget(bonus = new QLabel(QString("BONUS (if total score is 63 or more)")),8,0);
     ui->scorecardLayout->addWidget(topGrandTotal = new QLabel(QString("TOTAL of Upper Section")),9,0);
     ui->scorecardLayout->addWidget(toak = new QLabel(QString("Three of a Kind")),10,0);
     ui->scorecardLayout->addWidget(foak = new QLabel(QString("Four of a Kind")),11,0);
@@ -143,16 +143,22 @@ GameWindow::GameWindow(QWidget *parent) :
     grandTotal->setLineWidth(1);
     topSubTotalScore->setFrameShape(QFrame::Box);
     topSubTotalScore->setLineWidth(1);
+    topSubTotalScore->setAlignment(Qt::AlignCenter);
     bonusScore->setFrameShape(QFrame::Box);
     bonusScore->setLineWidth(1);
+    bonusScore->setAlignment(Qt::AlignCenter);
     topGrandTotalScore->setFrameShape(QFrame::Box);
     topGrandTotalScore->setLineWidth(1);
+    topGrandTotalScore->setAlignment(Qt::AlignCenter);
     bottomSubTotalScore->setFrameShape(QFrame::Box);
     bottomSubTotalScore->setLineWidth(1);
+    bottomSubTotalScore->setAlignment(Qt::AlignCenter);
     topGrandTotal2Score->setFrameShape(QFrame::Box);
     topGrandTotal2Score->setLineWidth(1);
+    topGrandTotal2Score->setAlignment(Qt::AlignCenter);
     grandTotalScore->setFrameShape(QFrame::Box);
     grandTotalScore->setLineWidth(1);
+    grandTotalScore->setAlignment(Qt::AlignCenter);
     fh->setFrameShape(QFrame::Box);
     fh->setLineWidth(1);
     setUpScoreButtonArray();
@@ -245,6 +251,12 @@ void GameWindow::setUpScoreButtonArray()
     scoreButtonSet[10]= lgStraightScore;
     scoreButtonSet[11]= chanceScore;
     scoreButtonSet[12]= yahtzeeScore;
+    for(int i = 0; i<6; i++)
+    {
+        topScoreSetArray[i] = false;
+        bottomScoreSetArray[i] = false;
+    }
+    bottomScoreSetArray[6]=false;
 }
 
 void GameWindow::setUpScoreLabelArray()
@@ -257,86 +269,180 @@ void GameWindow::setUpScoreLabelArray()
     scoreLabelSet[5]= grandTotalScore;
 }
 
+bool GameWindow::goFish(int x)
+{
+    for(int i = 0; i<5; i++)
+        if(diceSet[i]->value==x)
+            return true;
+    return false;
+}
+
+bool GameWindow::checkSmallStraight()
+{
+    return(goFish(1)&&goFish(2)&&goFish(3)&&goFish(4))||(goFish(2)&&goFish(3)&&goFish(4)&&goFish(5))||(goFish(3)&&goFish(4)&&goFish(5)&&goFish(6));
+}
+
+void GameWindow::checkTopComplete()
+{
+    bool topCompleted = true;
+    for(int i = 0; i < 6; i++)
+    {
+        if(!topScoreSetArray[i])
+            topCompleted = false;
+    }
+    if(topCompleted)
+    {
+        if(topSubTotalScore->text().toInt()>=63)
+        {
+            int temp = (topSubTotalScore->text().toInt())+35;
+            bonusScore->setText(QString::number(35));
+            topGrandTotalScore->setText(QString::number(temp));
+            topGrandTotal2Score->setText(QString::number(temp));
+        }
+        else
+        {
+            bonusScore->setText(QString::number(0));
+            topGrandTotalScore->setText(topSubTotalScore->text());
+            topGrandTotal2Score->setText(topSubTotalScore->text());
+        }
+        sectionsCompleted++;
+        finalScore();
+    }
+}
+
+void GameWindow::checkBottomComplete()
+{
+    bool botCompleted = true;
+    for(int i = 0; i < 7; i++)
+    {
+        if(!bottomScoreSetArray[i])
+            botCompleted = false;
+    }
+    if(botCompleted)
+        sectionsCompleted++;
+        finalScore();
+}
+
+void GameWindow::finalScore()
+{
+    if(sectionsCompleted == 2)
+    {
+        int score = 0;
+        score += topGrandTotal2Score->text().toInt();
+        score += bottomSubTotalScore->text().toInt();
+        grandTotalScore->setText(QString::number(score));
+    }
+    else
+    {
+        return;
+    }
+}
+
 void GameWindow::on_oneScore_clicked()
 {
     int score = 0;
-    oneScoreSet = true;
+    topScoreSetArray[0] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value==1)
             score++;
     }
     oneScore->setText(QString::number(score));
+    oneScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
 }
 
 void GameWindow::on_twoScore_clicked()
 {
     int score = 0;
-    twoScoreSet = true;
+    topScoreSetArray[1] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value==2)
             score+=2;
     }
     twoScore->setText(QString::number(score));
+    twoScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
 }
 
 void GameWindow::on_threeScore_clicked()
 {
     int score = 0;
-    threeScoreSet = true;
+    topScoreSetArray[2] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value == 3)
             score+=3;
     }
     threeScore->setText(QString::number(score));
+    threeScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
 }
 
 void GameWindow::on_fourScore_clicked()
 {
     int score = 0;
-    fourScoreSet = true;
+    topScoreSetArray[3] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value == 4)
             score+=4;
     }
     fourScore->setText(QString::number(score));
+    fourScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
 }
 
 void GameWindow::on_fiveScore_clicked()
 {
     int score = 0;
-    fiveScoreSet = true;
+    topScoreSetArray[4] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value == 5)
             score+=5;
     }
     fiveScore->setText(QString::number(score));
+    fiveScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
+
 }
 
 void GameWindow::on_sixScore_clicked()
 {
     int score = 0;
-    sixScoreSet = true;
+    topScoreSetArray[5] = true;
     for(int i = 0; i<5; i++)
     {
         if(diceSet[i]->value == 6)
             score+=6;
     }
     sixScore->setText(QString::number(score));
+    sixScore->setEnabled(false);
+    int temp = topSubTotalScore->text().toInt();
+    topSubTotalScore->setText(QString::number(temp+score));
+    checkTopComplete();
 }
 
 void GameWindow::on_toakScore_clicked()
 {
     int score = 0;
-    threeOfAKindScoreSet = true;
+    bottomScoreSetArray[0] = true;
     sortDice();
-    if((diceSet[2]->value==diceSet[1]->value==diceSet[0]->value)
-            ||(diceSet[2]->value==diceSet[1]->value==diceSet[3]->value)
-            ||(diceSet[2]->value==diceSet[3]->value==diceSet[4]->value))
+    if(((diceSet[2]->value==diceSet[1]->value)&&(diceSet[1]->value==diceSet[0]->value))
+            ||((diceSet[2]->value==diceSet[1]->value)&&(diceSet[1]->value==diceSet[3]->value))
+            ||((diceSet[2]->value==diceSet[3]->value)&&(diceSet[3]->value==diceSet[4]->value)))
     {
         for(int i = 0; i<5; i++)
         {
@@ -344,15 +450,19 @@ void GameWindow::on_toakScore_clicked()
         }
     }
     threeOfAKindScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    threeOfAKindScore->setEnabled(false);
+    checkBottomComplete();
 }
 
 void GameWindow::on_foakScore_clicked()
 {
     int score = 0;
-    fourOfAKindScoreSet = true;
+    bottomScoreSetArray[1] = true;
     sortDice();
-    if((diceSet[3]->value==diceSet[2]->value==diceSet[1]->value==diceSet[0]->value)
-            ||(diceSet[4]->value==diceSet[2]->value==diceSet[1]->value==diceSet[3]->value))
+    if(((diceSet[3]->value==diceSet[2]->value)&&(diceSet[1]->value==diceSet[0]->value)&&(diceSet[2]->value==diceSet[1]->value))
+            ||((diceSet[4]->value==diceSet[2]->value)&&(diceSet[1]->value==diceSet[3]->value)&&(diceSet[2]->value==diceSet[1]->value)))
     {
         for(int i = 0; i<5; i++)
         {
@@ -360,58 +470,80 @@ void GameWindow::on_foakScore_clicked()
         }
     }
     fourOfAKindScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    fourOfAKindScore->setEnabled(false);
+    checkBottomComplete();
 }
 
 void GameWindow::on_fhScore_clicked()
 {
     int score = 0;
-    fullHouseScoreSet = true;
+    bottomScoreSetArray[2] = true;
     sortDice();
-    if(((diceSet[2]->value==diceSet[1]->value==diceSet[0]->value)&&(diceSet[4]->value==diceSet[3]->value))
-            ||((diceSet[2]->value==diceSet[3]->value==diceSet[4]->value)&&(diceSet[0]->value==diceSet[1]->value)))
+    if(((diceSet[2]->value==diceSet[1]->value)&&(diceSet[1]->value==diceSet[0]->value)&&(diceSet[4]->value==diceSet[3]->value))
+            ||((diceSet[2]->value==diceSet[3]->value)&&(diceSet[3]->value==diceSet[4]->value)&&(diceSet[0]->value==diceSet[1]->value)))
             score = 25;
     fullHouseScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    fullHouseScore->setEnabled(false);
+    checkBottomComplete();
 
 }
 
 void GameWindow::on_smsScore_clicked()
 {
     int score = 0;
-    smStraightScoreSet = true;
+    bottomScoreSetArray[3] = true;
     sortDice();
-    if(true)
-     {   score = 30;}
-     smStraightScore->setText(QString::number(score));
+    if(checkSmallStraight())
+     { score = 30;}
+    smStraightScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    smStraightScore->setEnabled(false);
+    checkBottomComplete();
 }
 
 void GameWindow::on_lgsScore_clicked()
 {
     int score = 0;
-    lgStraightScoreSet = true;
+    bottomScoreSetArray[4] = true;
     sortDice();
-    if((diceSet[0]->value!=diceSet[1]->value)&&
-            (diceSet[1]->value!=diceSet[2]->value)&&
-            (diceSet[2]->value!=diceSet[3]->value)&&
-            (diceSet[3]->value!=diceSet[4]->value))
+    if((diceSet[0]->value==1&&diceSet[1]->value==2&&diceSet[2]->value==3&&diceSet[3]->value==4&&diceSet[4]->value==5)||
+            (diceSet[0]->value==2&&diceSet[1]->value==3&&diceSet[2]->value==4&&diceSet[3]->value==5&&diceSet[4]->value==6))
             score = 40;
     lgStraightScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    lgStraightScore->setEnabled(false);
+    checkBottomComplete();
 }
 
 void GameWindow::on_chanceScore_clicked()
 {
     int score = 0;
-    chanceScoreSet = true;
+    bottomScoreSetArray[5] = true;
     for(int i = 0; i<5; i++)
         score+=diceSet[i]->value;
     chanceScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    chanceScore->setEnabled(false);
+    checkBottomComplete();
 }
 
 void GameWindow::on_yahtzeeScore_clicked()
 {
     int score = 0;
-    yahtzeeScoreSet = true;
+    bottomScoreSetArray[6] = true;
     sortDice();
     if(diceSet[0]->value==diceSet[4]->value)
             score = 50;
     yahtzeeScore->setText(QString::number(score));
+    int temp = bottomSubTotalScore->text().toInt();
+    bottomSubTotalScore->setText(QString::number(temp+score));
+    yahtzeeScore->setEnabled(false);
+    checkBottomComplete();
 }
