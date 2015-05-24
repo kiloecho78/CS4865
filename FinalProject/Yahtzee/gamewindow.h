@@ -46,6 +46,19 @@ private:
     QPushButton *lgStraightScore;
     QPushButton *chanceScore;
     QPushButton *yahtzeeScore;
+    bool oneScoreSet = false;
+    bool twoScoreSet = false;
+    bool threeScoreSet = false;
+    bool fourScoreSet = false;
+    bool fiveScoreSet = false;
+    bool sixScoreSet = false;
+    bool threeOfAKindScoreSet = false;
+    bool fourOfAKindScoreSet = false;
+    bool fullHouseScoreSet = false;
+    bool smStraightScoreSet = false;
+    bool lgStraightScoreSet = false;
+    bool chanceScoreSet = false;
+    bool yahtzeeScoreSet = false;
     QLabel *one;
     QLabel *two;
     QLabel *three;
@@ -85,9 +98,20 @@ public:
 
 private slots:
     void on_endTurn_clicked();
-    
-
     void on_rollButton_clicked();
+    void on_oneScore_clicked();
+    void on_twoScore_clicked();
+    void on_threeScore_clicked();
+    void on_fourScore_clicked();
+    void on_fiveScore_clicked();
+    void on_sixScore_clicked();
+    void on_toakScore_clicked();
+    void on_foakScore_clicked();
+    void on_fhScore_clicked();
+    void on_smsScore_clicked();
+    void on_lgsScore_clicked();
+    void on_chanceScore_clicked();
+    void on_yahtzeeScore_clicked();
 };
 
 #endif // GAMEWINDOW_H
