@@ -11,48 +11,34 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     t.start();
-    die1 = new QPushButton();
+    player1 = new Player();
+//    turnOrder.enqueue(player1);
+    diceSet[0] = (die1 = new Die(this));
     die1->setMinimumSize(50,50);
     die1->setMaximumSize(50,50);
-    //die1->setFlat(true);
+//    die1->setFlat(true);
     ui->diceGridLayout->addWidget(die1,1,0,Qt::AlignCenter);
-
-    die2 = new QPushButton();
+    diceSet[1] = (die2 = new Die(this));
     die2->setMinimumSize(50,50);
     die2->setMaximumSize(50,50);
-    //die2->setFlat(true);
+//    die2->setFlat(true);
     ui->diceGridLayout->addWidget(die2,1,1,Qt::AlignCenter);
-    die3 = new QPushButton();
+    diceSet[2] = (die3 = new Die(this));
     die3->setMinimumSize(50,50);
     die3->setMaximumSize(50,50);
-    //die3->setFlat(true);
+//    die3->setFlat(true);
     ui->diceGridLayout->addWidget(die3,1,2,Qt::AlignCenter);
-    die4 = new QPushButton();
+    diceSet[3] = (die4 = new Die(this));
     die4->setMinimumSize(50,50);
     die4->setMaximumSize(50,50);
-    //die4->setFlat(true);
+//    die4->setFlat(true);
     ui->diceGridLayout->addWidget(die4,1,3,Qt::AlignCenter);
-    die5 = new QPushButton();
+    diceSet[4] = (die5 = new Die(this));
     die5->setMinimumSize(50,50);
     die5->setMaximumSize(50,50);
-    //die5->setFlat(true);
+//    die5->setFlat(true);
     ui->diceGridLayout->addWidget(die5,1,4,Qt::AlignCenter);
-    diceSet[0] = new Die(die1);
-    diceSet[1] = new Die(die2);
-    diceSet[2] = new Die(die3);
-    diceSet[3] = new Die(die4);
-    diceSet[4] = new Die(die5);
     createSet();
-    dice1 = new QLineEdit();
-    dice2 = new QLineEdit();
-    dice3 = new QLineEdit();
-    dice4 = new QLineEdit();
-    dice5 = new QLineEdit();
-    ui->diceGridLayout->addWidget(dice1,3,0,Qt::AlignCenter);
-    ui->diceGridLayout->addWidget(dice2,3,1,Qt::AlignCenter);
-    ui->diceGridLayout->addWidget(dice3,3,2,Qt::AlignCenter);
-    ui->diceGridLayout->addWidget(dice4,3,3,Qt::AlignCenter);
-    ui->diceGridLayout->addWidget(dice5,3,4,Qt::AlignCenter);
     rollButton = new QPushButton();
     rollButton->setText("Roll");
     endTurn = new QPushButton();
@@ -220,11 +206,6 @@ void GameWindow::showDice()
 
 void GameWindow::on_endTurn_clicked()
 {
-    diceSet[0]->value = dice1->text().toInt();
-    diceSet[1]->value = dice2->text().toInt();
-    diceSet[2]->value = dice3->text().toInt();
-    diceSet[3]->value = dice4->text().toInt();
-    diceSet[4]->value = dice5->text().toInt();
     sortDice();
     showDice();
 

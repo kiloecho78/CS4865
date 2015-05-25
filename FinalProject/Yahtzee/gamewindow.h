@@ -3,9 +3,12 @@
 
 #include "die.h"
 #include <QTime>
-#include<QLineEdit>
+#include <QLineEdit>
+#include <QLabel>
 #include <QPushButton>
 #include <QMainWindow>
+#include <QQueue>
+#include "player.h"
 
 namespace Ui {
 class GameWindow;
@@ -21,18 +24,13 @@ private:
     QPushButton *scoreButtonSet[13];
     QLabel *scoreLabelSet[6];
     QTime t;
-    QPushButton *die1;
-    QPushButton *die2;
-    QPushButton *die3;
-    QPushButton *die4;
-    QPushButton *die5;
+    Die *die1;
+    Die *die2;
+    Die *die3;
+    Die *die4;
+    Die *die5;
     QPushButton *rollButton;
     QPushButton *endTurn;
-    QLineEdit *dice1;
-    QLineEdit *dice2;
-    QLineEdit *dice3;
-    QLineEdit *dice4;
-    QLineEdit *dice5;
     QPushButton *oneScore;
     QPushButton *twoScore;
     QPushButton *threeScore;
@@ -49,7 +47,7 @@ private:
     bool topScoreSetArray[6];
     bool bottomScoreSetArray[7];
     int sectionsCompleted = 0;
-
+//    static QQueue <Player*>turnOrder;
     QLabel *one;
     QLabel *two;
     QLabel *three;
@@ -77,6 +75,7 @@ private:
     QLabel *grandTotalScore;
     QLabel *gameColHeader;
     QLabel *playerNameColHeader;
+    Player *player1;
 
 public:
     explicit GameWindow(QWidget *parent = 0);

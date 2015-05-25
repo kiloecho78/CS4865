@@ -1,10 +1,10 @@
 #ifndef DIE_H
 #define DIE_H
 #include <QWidget>
-#include <QLabel>
+#include <QPushButton>
 
 
-class Die: public QLabel
+class Die: public QPushButton
 {
     Q_OBJECT
 private:

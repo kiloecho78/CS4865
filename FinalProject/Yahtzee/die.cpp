@@ -7,7 +7,7 @@ QColor dieEdgeColor(0,0,0);
 QColor dieCenterColor(255,255,255);
 QColor dieHeldColor(219, 255, 255);
 
-Die::Die(QWidget *parent):QLabel(parent)
+Die::Die(QWidget *parent):QPushButton(parent)
 {
     show();
 }
