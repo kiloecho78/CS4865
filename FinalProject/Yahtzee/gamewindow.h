@@ -113,6 +113,7 @@ private slots:
     void on_die3_clicked();
     void on_die4_clicked();
     void on_die5_clicked();
+    void on_action_Rules_triggered();
 };
 
 #endif // GAMEWINDOW_H

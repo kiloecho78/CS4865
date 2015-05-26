@@ -1,8 +1,9 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
+#include "rulesdialog.h"
 #include <QTime>
 
-
+extern RulesDialog *Rules;
 float scale = 1.0;
 
 GameWindow::GameWindow(QWidget *parent) :
@@ -567,4 +568,9 @@ void GameWindow::on_die5_clicked()
 {
     diceSet[4]->held = (!diceSet[4]->held);
     die5->repaint();
+}
+
+void GameWindow::on_action_Rules_triggered()
+{
+    Rules->show();
 }
