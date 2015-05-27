@@ -12,9 +12,10 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     t.start();
-    player1 = new Player("Keith");
-    player2 = new Player("Amy");
+    player1 = new Player("Keith", 1);
+    player2 = new Player("Amy", 2);
     turnOrder.enqueue(player1);
+    turnOrder.enqueue(player2);
     diceSet[0] = (die1 = new Die(this));
     die1->setMinimumSize(50,50);
     die1->setMaximumSize(50,50);
@@ -43,12 +44,12 @@ GameWindow::GameWindow(QWidget *parent) :
     createSet();
     rollButton = new QPushButton();
     rollButton->setText("Roll");
-    endTurn = new QPushButton();
-    endTurn->setText("Score");
+//    endTurn = new QPushButton();
+//    endTurn->setText("Score");
     connect(rollButton,SIGNAL(clicked()),this,SLOT(rollButton_clicked()));
-    connect(endTurn,SIGNAL(clicked()),this,SLOT(endTurn_clicked()));
+//    connect(endTurn,SIGNAL(clicked()),this,SLOT(endTurn_clicked()));
     ui->diceGridLayout->addWidget(rollButton,2,2,Qt::AlignCenter);
-    ui->diceGridLayout->addWidget(endTurn,2,4,Qt::AlignCenter);
+//    ui->diceGridLayout->addWidget(endTurn,2,4,Qt::AlignCenter);*/
     gameColHeader = new QLabel(QString("Yahtzee!"));
     QFont f("Arial", 28, QFont::Bold);
     gameColHeader->setFont(f);
@@ -208,22 +209,18 @@ void GameWindow::showDice()
     }
 }
 
-void GameWindow::endTurn_clicked()
-{
-    sortDice();
-    showDice();
-
-}
-
 
 void GameWindow::rollButton_clicked()
 {
-    qsrand(t.elapsed());
-    for(int i = 0; i<5; i++)
-        if(!diceSet[i]->held)
-            diceSet[i]->value = (qrand() % 6)+1;
-    showDice();
-    currentPlayer.rolls--;
+    if(currentPlayer->rolls > 0)
+    {
+        qsrand(t.elapsed());
+        for(int i = 0; i<5; i++)
+            if(!diceSet[i]->held)
+                diceSet[i]->value = (qrand() % 6)+1;
+        showDice();
+        currentPlayer->rolls--;
+    }
 }
 
 void GameWindow::setUpScoreButtonArray()
@@ -340,8 +337,52 @@ void GameWindow::createSet()
 void GameWindow::playgame()
 {
         currentPlayer = turnOrder.dequeue();
-        currentPlayer.rolls = 3;
-        playerNameColHeader->setText(currentPlayer.myname);
+        currentPlayer->rolls = 3;
+        playerNameColHeader->setText(currentPlayer->myname);
+        (currentPlayer->myScore.ones==-1)? oneScore->setText(""):oneScore->setText(QString::number(currentPlayer->myScore.ones));
+        (currentPlayer->myScore.twos==-1)? twoScore->setText(""):twoScore->setText(QString::number(currentPlayer->myScore.twos));
+        (currentPlayer->myScore.threes==-1)? threeScore->setText(""):threeScore->setText(QString::number(currentPlayer->myScore.threes));
+        (currentPlayer->myScore.fours==-1)? fourScore->setText(""):fourScore->setText(QString::number(currentPlayer->myScore.fours));
+        (currentPlayer->myScore.fives==-1)? fiveScore->setText(""):fiveScore->setText(QString::number(currentPlayer->myScore.fives));
+        (currentPlayer->myScore.sixes==-1)? sixScore->setText(""):sixScore->setText(QString::number(currentPlayer->myScore.sixes));
+}
+
+void GameWindow::endTurn()
+{
+    currentPlayer->rolls=0;
+    (oneScore->text()=="")? currentPlayer->myScore.ones = -1: currentPlayer->myScore.ones = oneScore->text().toInt();
+    (twoScore->text()=="")? currentPlayer->myScore.twos = -1: currentPlayer->myScore.twos = twoScore->text().toInt();
+    (threeScore->text()=="")? currentPlayer->myScore.threes = -1: currentPlayer->myScore.threes = threeScore->text().toInt();
+    (fourScore->text()=="")? currentPlayer->myScore.fours = -1: currentPlayer->myScore.fours = fourScore->text().toInt();
+    (fiveScore->text()=="")? currentPlayer->myScore.fives = -1: currentPlayer->myScore.fives = fiveScore->text().toInt();
+    (sixScore->text()=="")? currentPlayer->myScore.sixes = -1: currentPlayer->myScore.sixes = sixScore->text().toInt();
+    int num = currentPlayer->playerNum;
+    switch(num)
+    {
+    case 1:
+        turnOrder.enqueue(player1);
+        break;
+    case 2:
+        turnOrder.enqueue(player2);
+        break;
+    case 3:
+        turnOrder.enqueue(player3);
+        break;
+    case 4:
+        turnOrder.enqueue(player4);
+        break;
+    case 5:
+        turnOrder.enqueue(player5);
+        break;
+    }
+
+    on_checkBox1_stateChanged(0);
+    on_checkBox2_stateChanged(0);
+    on_checkBox3_stateChanged(0);
+    on_checkBox4_stateChanged(0);
+    on_checkBox5_stateChanged(0);
+
+    playgame();
 }
 
 void GameWindow::oneScore_clicked()
@@ -358,6 +399,8 @@ void GameWindow::oneScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
+
 }
 
 void GameWindow::twoScore_clicked()
@@ -374,6 +417,7 @@ void GameWindow::twoScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
 }
 
 void GameWindow::threeScore_clicked()
@@ -390,6 +434,7 @@ void GameWindow::threeScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
 }
 
 void GameWindow::fourScore_clicked()
@@ -406,6 +451,7 @@ void GameWindow::fourScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
 }
 
 void GameWindow::fiveScore_clicked()
@@ -422,6 +468,7 @@ void GameWindow::fiveScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
 
 }
 
@@ -439,6 +486,7 @@ void GameWindow::sixScore_clicked()
     int temp = topSubTotalScore->text().toInt();
     topSubTotalScore->setText(QString::number(temp+score));
     checkTopComplete();
+    endTurn();
 }
 
 void GameWindow::toakScore_clicked()
@@ -460,6 +508,7 @@ void GameWindow::toakScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     threeOfAKindScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::foakScore_clicked()
@@ -480,6 +529,7 @@ void GameWindow::foakScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     fourOfAKindScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::fhScore_clicked()
@@ -495,6 +545,7 @@ void GameWindow::fhScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     fullHouseScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 
 }
 
@@ -510,6 +561,7 @@ void GameWindow::smsScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     smStraightScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::lgsScore_clicked()
@@ -525,6 +577,7 @@ void GameWindow::lgsScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     lgStraightScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::chanceScore_clicked()
@@ -538,6 +591,7 @@ void GameWindow::chanceScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     chanceScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::yahtzeeScore_clicked()
@@ -552,6 +606,7 @@ void GameWindow::yahtzeeScore_clicked()
     bottomSubTotalScore->setText(QString::number(temp+score));
     yahtzeeScore->setEnabled(false);
     checkBottomComplete();
+    endTurn();
 }
 
 void GameWindow::die1_clicked(bool s)

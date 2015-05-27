@@ -12,10 +12,11 @@ private:
     bool turn;
     QString ip;
     int rolls;
+    int playerNum;
 
 
 public:
-    Player(QString name);
+    Player(QString name, int i);
     ~Player();
     void getMyScore();
     friend class GameWindow;

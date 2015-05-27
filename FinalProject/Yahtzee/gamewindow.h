@@ -30,7 +30,7 @@ private:
     Die *die4;
     Die *die5;
     QPushButton *rollButton;
-    QPushButton *endTurn;
+//    QPushButton *endTurn;
     QPushButton *oneScore;
     QPushButton *twoScore;
     QPushButton *threeScore;
@@ -97,9 +97,10 @@ public:
     void finalScore();
     void createSet();
     void playgame();
+    void endTurn();
 
 private slots:
-    void endTurn_clicked();
+//    void endTurn_clicked();
     void rollButton_clicked();
     void oneScore_clicked();
     void twoScore_clicked();
