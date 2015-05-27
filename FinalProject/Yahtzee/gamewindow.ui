@@ -210,10 +210,60 @@
        <x>10</x>
        <y>10</y>
        <width>351</width>
-       <height>121</height>
+       <height>101</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="diceGridLayout"/>
+    </widget>
+    <widget class="QCheckBox" name="checkBox1">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>120</y>
+       <width>17</width>
+       <height>17</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox2">
+     <property name="geometry">
+      <rect>
+       <x>105</x>
+       <y>120</y>
+       <width>17</width>
+       <height>17</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox3">
+     <property name="geometry">
+      <rect>
+       <x>175</x>
+       <y>120</y>
+       <width>17</width>
+       <height>17</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox4">
+     <property name="geometry">
+      <rect>
+       <x>245</x>
+       <y>120</y>
+       <width>17</width>
+       <height>17</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox5">
+     <property name="geometry">
+      <rect>
+       <x>315</x>
+       <y>120</y>
+       <width>17</width>
+       <height>17</height>
+      </rect>
+     </property>
     </widget>
    </widget>
    <widget class="QFrame" name="scoreCardFrame">

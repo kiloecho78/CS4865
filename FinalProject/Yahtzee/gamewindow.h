@@ -47,7 +47,7 @@ private:
     bool topScoreSetArray[6];
     bool bottomScoreSetArray[7];
     int sectionsCompleted = 0;
-//    static QQueue <Player*>turnOrder;
+    QQueue <Player*>turnOrder;
     QLabel *one;
     QLabel *two;
     QLabel *three;
@@ -76,6 +76,11 @@ private:
     QLabel *gameColHeader;
     QLabel *playerNameColHeader;
     Player *player1;
+    Player *player2;
+    Player *player3;
+    Player *player4;
+    Player *player5;
+    Player *currentPlayer;
 
 public:
     explicit GameWindow(QWidget *parent = 0);
@@ -91,29 +96,35 @@ public:
     void checkBottomComplete();
     void finalScore();
     void createSet();
+    void playgame();
 
 private slots:
-    void on_endTurn_clicked();
-    void on_rollButton_clicked();
-    void on_oneScore_clicked();
-    void on_twoScore_clicked();
-    void on_threeScore_clicked();
-    void on_fourScore_clicked();
-    void on_fiveScore_clicked();
-    void on_sixScore_clicked();
-    void on_toakScore_clicked();
-    void on_foakScore_clicked();
-    void on_fhScore_clicked();
-    void on_smsScore_clicked();
-    void on_lgsScore_clicked();
-    void on_chanceScore_clicked();
-    void on_yahtzeeScore_clicked();
-    void on_die1_clicked();
-    void on_die2_clicked();
-    void on_die3_clicked();
-    void on_die4_clicked();
-    void on_die5_clicked();
+    void endTurn_clicked();
+    void rollButton_clicked();
+    void oneScore_clicked();
+    void twoScore_clicked();
+    void threeScore_clicked();
+    void fourScore_clicked();
+    void fiveScore_clicked();
+    void sixScore_clicked();
+    void toakScore_clicked();
+    void foakScore_clicked();
+    void fhScore_clicked();
+    void smsScore_clicked();
+    void lgsScore_clicked();
+    void chanceScore_clicked();
+    void yahtzeeScore_clicked();
+    void die1_clicked(bool s);
+    void die2_clicked(bool s);
+    void die3_clicked(bool s);
+    void die4_clicked(bool s);
+    void die5_clicked(bool s);
     void on_action_Rules_triggered();
+    void on_checkBox1_stateChanged(int arg1);
+    void on_checkBox2_stateChanged(int arg1);
+    void on_checkBox3_stateChanged(int arg1);
+    void on_checkBox4_stateChanged(int arg1);
+    void on_checkBox5_stateChanged(int arg1);
 };
 
 #endif // GAMEWINDOW_H

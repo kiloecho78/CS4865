@@ -7,14 +7,18 @@
 class Player
 {
 private:
-    QString name;
+    QString myname;
     Scorecard myScore;
     bool turn;
+    QString ip;
+    int rolls;
 
 
 public:
-    Player();
+    Player(QString name);
     ~Player();
+    void getMyScore();
+    friend class GameWindow;
 };
 
 #endif // PLAYER_H

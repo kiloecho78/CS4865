@@ -26,6 +26,8 @@ public:
     int extraYahtzee = -1;
     int bottomSubTotal;
     int grandTotal;
+    bool topScoreSetArray[6];
+    bool bottomScoreSetArray[7];
 
 public:
     Scorecard();

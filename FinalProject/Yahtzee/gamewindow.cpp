@@ -12,8 +12,9 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     t.start();
-    player1 = new Player();
-//    turnOrder.enqueue(player1);
+    player1 = new Player("Keith");
+    player2 = new Player("Amy");
+    turnOrder.enqueue(player1);
     diceSet[0] = (die1 = new Die(this));
     die1->setMinimumSize(50,50);
     die1->setMaximumSize(50,50);
@@ -44,8 +45,8 @@ GameWindow::GameWindow(QWidget *parent) :
     rollButton->setText("Roll");
     endTurn = new QPushButton();
     endTurn->setText("Score");
-    connect(rollButton,SIGNAL(clicked()),this,SLOT(on_rollButton_clicked()));
-    connect(endTurn,SIGNAL(clicked()),this,SLOT(on_endTurn_clicked()));
+    connect(rollButton,SIGNAL(clicked()),this,SLOT(rollButton_clicked()));
+    connect(endTurn,SIGNAL(clicked()),this,SLOT(endTurn_clicked()));
     ui->diceGridLayout->addWidget(rollButton,2,2,Qt::AlignCenter);
     ui->diceGridLayout->addWidget(endTurn,2,4,Qt::AlignCenter);
     gameColHeader = new QLabel(QString("Yahtzee!"));
@@ -54,7 +55,7 @@ GameWindow::GameWindow(QWidget *parent) :
     gameColHeader->setFrameShape(QFrame::Box);
     gameColHeader->setLineWidth(2);
     ui->scorecardLayout->addWidget(gameColHeader,0,0);
-    ui->scorecardLayout->addWidget(playerNameColHeader = new QLabel(QString("Amy")),0,2);
+    ui->scorecardLayout->addWidget(playerNameColHeader = new QLabel(),0,2);
     ui->scorecardLayout->addWidget(one = new QLabel(QString("Aces")),1,0);
     ui->scorecardLayout->addWidget(two = new QLabel(QString("Twos")),2,0);
     ui->scorecardLayout->addWidget(three = new QLabel(QString("Threes")),3,0);
@@ -151,24 +152,26 @@ GameWindow::GameWindow(QWidget *parent) :
     fh->setLineWidth(1);
     setUpScoreButtonArray();
     setUpScoreLabelArray();
-    connect(oneScore,SIGNAL(clicked()),this,SLOT(on_oneScore_clicked()));
-    connect(twoScore,SIGNAL(clicked()),this,SLOT(on_twoScore_clicked()));
-    connect(threeScore,SIGNAL(clicked()),this,SLOT(on_threeScore_clicked()));
-    connect(fourScore,SIGNAL(clicked()),this,SLOT(on_fourScore_clicked()));
-    connect(fiveScore,SIGNAL(clicked()),this,SLOT(on_fiveScore_clicked()));
-    connect(sixScore,SIGNAL(clicked()),this,SLOT(on_sixScore_clicked()));
-    connect(threeOfAKindScore,SIGNAL(clicked()),this,SLOT(on_toakScore_clicked()));
-    connect(fourOfAKindScore,SIGNAL(clicked()),this,SLOT(on_foakScore_clicked()));
-    connect(fullHouseScore,SIGNAL(clicked()),this,SLOT(on_fhScore_clicked()));
-    connect(smStraightScore,SIGNAL(clicked()),this,SLOT(on_smsScore_clicked()));
-    connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(on_lgsScore_clicked()));
-    connect(chanceScore,SIGNAL(clicked()),this,SLOT(on_chanceScore_clicked()));
-    connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(on_yahtzeeScore_clicked()));
-    connect(die1,SIGNAL(clicked()),this,SLOT(on_die1_clicked()));
-    connect(die2,SIGNAL(clicked()),this,SLOT(on_die2_clicked()));
-    connect(die3,SIGNAL(clicked()),this,SLOT(on_die3_clicked()));
-    connect(die4,SIGNAL(clicked()),this,SLOT(on_die4_clicked()));
-    connect(die5,SIGNAL(clicked()),this,SLOT(on_die5_clicked()));
+    connect(oneScore,SIGNAL(clicked()),this,SLOT(oneScore_clicked()));
+    connect(twoScore,SIGNAL(clicked()),this,SLOT(twoScore_clicked()));
+    connect(threeScore,SIGNAL(clicked()),this,SLOT(threeScore_clicked()));
+    connect(fourScore,SIGNAL(clicked()),this,SLOT(fourScore_clicked()));
+    connect(fiveScore,SIGNAL(clicked()),this,SLOT(fiveScore_clicked()));
+    connect(sixScore,SIGNAL(clicked()),this,SLOT(sixScore_clicked()));
+    connect(threeOfAKindScore,SIGNAL(clicked()),this,SLOT(toakScore_clicked()));
+    connect(fourOfAKindScore,SIGNAL(clicked()),this,SLOT(foakScore_clicked()));
+    connect(fullHouseScore,SIGNAL(clicked()),this,SLOT(fhScore_clicked()));
+    connect(smStraightScore,SIGNAL(clicked()),this,SLOT(smsScore_clicked()));
+    connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(lgsScore_clicked()));
+    connect(chanceScore,SIGNAL(clicked()),this,SLOT(chanceScore_clicked()));
+    connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(yahtzeeScore_clicked()));
+    connect(die1,SIGNAL(clicked()),this,SLOT(die1_clicked()));
+    connect(die2,SIGNAL(clicked()),this,SLOT(die2_clicked()));
+    connect(die3,SIGNAL(clicked()),this,SLOT(die3_clicked()));
+    connect(die4,SIGNAL(clicked()),this,SLOT(die4_clicked()));
+    connect(die5,SIGNAL(clicked()),this,SLOT(die5_clicked()));
+
+    playgame();
 }
 
 void GameWindow::resizeEvent(QResizeEvent *event)
@@ -205,7 +208,7 @@ void GameWindow::showDice()
     }
 }
 
-void GameWindow::on_endTurn_clicked()
+void GameWindow::endTurn_clicked()
 {
     sortDice();
     showDice();
@@ -213,13 +216,14 @@ void GameWindow::on_endTurn_clicked()
 }
 
 
-void GameWindow::on_rollButton_clicked()
+void GameWindow::rollButton_clicked()
 {
     qsrand(t.elapsed());
     for(int i = 0; i<5; i++)
         if(!diceSet[i]->held)
             diceSet[i]->value = (qrand() % 6)+1;
     showDice();
+    currentPlayer.rolls--;
 }
 
 void GameWindow::setUpScoreButtonArray()
@@ -332,8 +336,15 @@ void GameWindow::createSet()
         diceSet[i]->setEnabled(true);
     }
 }
+//-------------------------------------------------------------------------------------------------------------------------
+void GameWindow::playgame()
+{
+        currentPlayer = turnOrder.dequeue();
+        currentPlayer.rolls = 3;
+        playerNameColHeader->setText(currentPlayer.myname);
+}
 
-void GameWindow::on_oneScore_clicked()
+void GameWindow::oneScore_clicked()
 {
     int score = 0;
     topScoreSetArray[0] = true;
@@ -349,7 +360,7 @@ void GameWindow::on_oneScore_clicked()
     checkTopComplete();
 }
 
-void GameWindow::on_twoScore_clicked()
+void GameWindow::twoScore_clicked()
 {
     int score = 0;
     topScoreSetArray[1] = true;
@@ -365,7 +376,7 @@ void GameWindow::on_twoScore_clicked()
     checkTopComplete();
 }
 
-void GameWindow::on_threeScore_clicked()
+void GameWindow::threeScore_clicked()
 {
     int score = 0;
     topScoreSetArray[2] = true;
@@ -381,7 +392,7 @@ void GameWindow::on_threeScore_clicked()
     checkTopComplete();
 }
 
-void GameWindow::on_fourScore_clicked()
+void GameWindow::fourScore_clicked()
 {
     int score = 0;
     topScoreSetArray[3] = true;
@@ -397,7 +408,7 @@ void GameWindow::on_fourScore_clicked()
     checkTopComplete();
 }
 
-void GameWindow::on_fiveScore_clicked()
+void GameWindow::fiveScore_clicked()
 {
     int score = 0;
     topScoreSetArray[4] = true;
@@ -414,7 +425,7 @@ void GameWindow::on_fiveScore_clicked()
 
 }
 
-void GameWindow::on_sixScore_clicked()
+void GameWindow::sixScore_clicked()
 {
     int score = 0;
     topScoreSetArray[5] = true;
@@ -430,7 +441,7 @@ void GameWindow::on_sixScore_clicked()
     checkTopComplete();
 }
 
-void GameWindow::on_toakScore_clicked()
+void GameWindow::toakScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[0] = true;
@@ -451,7 +462,7 @@ void GameWindow::on_toakScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_foakScore_clicked()
+void GameWindow::foakScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[1] = true;
@@ -471,7 +482,7 @@ void GameWindow::on_foakScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_fhScore_clicked()
+void GameWindow::fhScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[2] = true;
@@ -487,7 +498,7 @@ void GameWindow::on_fhScore_clicked()
 
 }
 
-void GameWindow::on_smsScore_clicked()
+void GameWindow::smsScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[3] = true;
@@ -501,7 +512,7 @@ void GameWindow::on_smsScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_lgsScore_clicked()
+void GameWindow::lgsScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[4] = true;
@@ -516,7 +527,7 @@ void GameWindow::on_lgsScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_chanceScore_clicked()
+void GameWindow::chanceScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[5] = true;
@@ -529,7 +540,7 @@ void GameWindow::on_chanceScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_yahtzeeScore_clicked()
+void GameWindow::yahtzeeScore_clicked()
 {
     int score = 0;
     bottomScoreSetArray[6] = true;
@@ -543,34 +554,74 @@ void GameWindow::on_yahtzeeScore_clicked()
     checkBottomComplete();
 }
 
-void GameWindow::on_die1_clicked()
+void GameWindow::die1_clicked(bool s)
 {
-    diceSet[0]->held = (!diceSet[0]->held);
+    diceSet[0]->held = s;
     die1->repaint();
 }
 
-void GameWindow::on_die2_clicked()
+void GameWindow::die2_clicked(bool s)
 {
-    diceSet[1]->held = (!diceSet[1]->held);
+    diceSet[1]->held = s;
     die2->repaint();
 }
-void GameWindow::on_die3_clicked()
+void GameWindow::die3_clicked(bool s)
 {
-    diceSet[2]->held = (!diceSet[2]->held);
+    diceSet[2]->held = s;
     die3->repaint();
 }
-void GameWindow::on_die4_clicked()
+void GameWindow::die4_clicked(bool s)
 {
-    diceSet[3]->held = (!diceSet[3]->held);
+    diceSet[3]->held = s;
     die4->repaint();
 }
-void GameWindow::on_die5_clicked()
+void GameWindow::die5_clicked(bool s)
 {
-    diceSet[4]->held = (!diceSet[4]->held);
+    diceSet[4]->held = s;
     die5->repaint();
 }
 
 void GameWindow::on_action_Rules_triggered()
 {
     Rules->show();
+}
+
+void GameWindow::on_checkBox1_stateChanged(int arg1)
+{
+    if(arg1==2)
+        GameWindow::die1_clicked(true);
+    else if(arg1==0)
+        GameWindow::die1_clicked(false);
+}
+
+void GameWindow::on_checkBox2_stateChanged(int arg1)
+{
+    if(arg1==2)
+        GameWindow::die2_clicked(true);
+    else if(arg1==0)
+        GameWindow::die2_clicked(false);
+}
+
+void GameWindow::on_checkBox3_stateChanged(int arg1)
+{
+    if(arg1==2)
+        GameWindow::die3_clicked(true);
+    else if(arg1==0)
+        GameWindow::die3_clicked(false);
+}
+
+void GameWindow::on_checkBox4_stateChanged(int arg1)
+{
+    if(arg1==2)
+        GameWindow::die4_clicked(true);
+    else if(arg1==0)
+        GameWindow::die4_clicked(false);
+}
+
+void GameWindow::on_checkBox5_stateChanged(int arg1)
+{
+    if(arg1==2)
+        GameWindow::die5_clicked(true);
+    else if(arg1==0)
+        GameWindow::die5_clicked(false);
 }

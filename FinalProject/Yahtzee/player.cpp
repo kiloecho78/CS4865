@@ -1,8 +1,7 @@
 #include "player.h"
 
-Player::Player()
+Player::Player(QString name):myname(name)
 {
-
 }
 
 Player::~Player()
