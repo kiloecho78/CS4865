@@ -16,11 +16,8 @@ GameWindow::GameWindow(QWidget *parent) :
     player2 = new Player("Amy", 2);
     turnOrder.enqueue(player1);
     turnOrder.enqueue(player2);
-    diceSet[0] = (die1 = new Die(this));
-    die1->setMinimumSize(50,50);
-    die1->setMaximumSize(50,50);
-//    die1->setFlat(true);
-    ui->diceGridLayout->addWidget(die1,1,0,Qt::AlignCenter);
+    diceSet[0] = (ui->die1);
+    //ui->diceGridLayout->addWidget(die1,1,0,Qt::AlignCenter);
     diceSet[1] = (die2 = new Die(this));
     die2->setMinimumSize(50,50);
     die2->setMaximumSize(50,50);
@@ -166,7 +163,7 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(lgsScore_clicked()));
     connect(chanceScore,SIGNAL(clicked()),this,SLOT(chanceScore_clicked()));
     connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(yahtzeeScore_clicked()));
-    connect(die1,SIGNAL(clicked()),this,SLOT(die1_clicked()));
+    //connect(die1, , this, SLOT(die1_clicked()));
     connect(die2,SIGNAL(clicked()),this,SLOT(die2_clicked()));
     connect(die3,SIGNAL(clicked()),this,SLOT(die3_clicked()));
     connect(die4,SIGNAL(clicked()),this,SLOT(die4_clicked()));
@@ -376,11 +373,11 @@ void GameWindow::endTurn()
         break;
     }
 
-    on_checkBox1_stateChanged(0);
+    /*on_checkBox1_stateChanged(0);
     on_checkBox2_stateChanged(0);
     on_checkBox3_stateChanged(0);
     on_checkBox4_stateChanged(0);
-    on_checkBox5_stateChanged(0);
+    on_checkBox5_stateChanged(0);*/
 
     playgame();
 }
@@ -609,74 +606,82 @@ void GameWindow::yahtzeeScore_clicked()
     endTurn();
 }
 
-void GameWindow::die1_clicked(bool s)
+/*void GameWindow::die1_clicked()
 {
-    diceSet[0]->held = s;
+    diceSet[0]->held ^=1;
     die1->repaint();
 }
 
-void GameWindow::die2_clicked(bool s)
+void GameWindow::die2_clicked()
 {
-    diceSet[1]->held = s;
+    diceSet[1]->held ^=1;
     die2->repaint();
 }
-void GameWindow::die3_clicked(bool s)
+void GameWindow::die3_clicked()
 {
-    diceSet[2]->held = s;
+    diceSet[2]->held ^=1;
     die3->repaint();
 }
-void GameWindow::die4_clicked(bool s)
+void GameWindow::die4_clicked()
 {
-    diceSet[3]->held = s;
+    diceSet[3]->held ^=1;
     die4->repaint();
 }
-void GameWindow::die5_clicked(bool s)
+void GameWindow::die5_clicked()
 {
-    diceSet[4]->held = s;
+    diceSet[4]->held ^=1;
     die5->repaint();
-}
+}*/
 
 void GameWindow::on_action_Rules_triggered()
 {
     Rules->show();
 }
 
-void GameWindow::on_checkBox1_stateChanged(int arg1)
+/*void GameWindow::on_checkBox1_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die1_clicked(true);
+        GameWindow::die1_clicked();
     else if(arg1==0)
-        GameWindow::die1_clicked(false);
+        GameWindow::die1_clicked();
 }
 
 void GameWindow::on_checkBox2_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die2_clicked(true);
+        GameWindow::die2_clicked();
     else if(arg1==0)
-        GameWindow::die2_clicked(false);
+        GameWindow::die2_clicked();
 }
 
 void GameWindow::on_checkBox3_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die3_clicked(true);
+        GameWindow::die3_clicked();
     else if(arg1==0)
-        GameWindow::die3_clicked(false);
+        GameWindow::die3_clicked();
 }
 
 void GameWindow::on_checkBox4_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die4_clicked(true);
+        GameWindow::die4_clicked();
     else if(arg1==0)
-        GameWindow::die4_clicked(false);
+        GameWindow::die4_clicked();
 }
 
 void GameWindow::on_checkBox5_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die5_clicked(true);
+        GameWindow::die5_clicked();
     else if(arg1==0)
-        GameWindow::die5_clicked(false);
+        GameWindow::die5_clicked();
+}*/
+
+void GameWindow::on_die1_toggled(bool checked)
+{
+    if(checked)
+        diceSet[0]->held = true;
+    else
+        diceSet[0]->held = false;
 }
