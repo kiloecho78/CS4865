@@ -5,8 +5,9 @@
 extern float scale;
 QColor dieEdgeColor(0,0,0);
 QColor dieCenterColor(255,255,255);
+QColor dieHeldColor(219, 255, 255);
 
-Die::Die(QWidget *parent):QLabel(parent)
+Die::Die(QWidget *parent):QPushButton(parent)
 {
     show();
 }
@@ -21,22 +22,59 @@ void Die::mouseReleaseEvent(QMouseEvent *ev)
 
 }
 
-void Die::setPos(int p)
-{
-    pos = p;
-}
-
 void Die::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    resize(70*scale, 70*scale);
+    resize(50*scale, 50*scale);
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(dieEdgeColor);
-    p.setBrush(dieCenterColor);
+    if(this->held == true)
+    {
+        p.setBrush(dieHeldColor);
+    }
+    else
+        p.setBrush(dieCenterColor);
     p.scale(scale,scale);
-    //const int top = 204;
-    p.drawRect(0,0,28,28);
+    p.drawRect(0,0,50,50);
     p.setBrush(dieEdgeColor);
-    p.drawEllipse(QPointF(14,14), 3, 3);
+    int face = this->value;
+    switch(face)
+    {
+    case 1:
+        p.drawEllipse(QPointF(25,25), 4, 4);
+        break;
+    case 2:
+        p.drawEllipse(QPointF(12,12), 4, 4);
+        p.drawEllipse(QPointF(37,37), 4, 4);
+        break;
+    case 3:
+        p.drawEllipse(QPointF(12,12), 4, 4);
+        p.drawEllipse(QPointF(25,25), 4, 4);
+        p.drawEllipse(QPointF(37,37), 4, 4);
+        break;
+    case 4:
+        p.drawEllipse(QPointF(12,12), 4, 4);
+        p.drawEllipse(QPointF(12,37), 4, 4);
+        p.drawEllipse(QPointF(37,12), 4, 4);
+        p.drawEllipse(QPointF(37,37), 4, 4);
+        break;
+    case 5:
+        p.drawEllipse(QPointF(12,12), 4, 4);
+        p.drawEllipse(QPointF(12,37), 4, 4);
+        p.drawEllipse(QPointF(25,25), 4, 4);
+        p.drawEllipse(QPointF(37,12), 4, 4);
+        p.drawEllipse(QPointF(37,37), 4, 4);
+        break;
+    case 6:
+        p.drawEllipse(QPointF(12,12), 4, 4);
+        p.drawEllipse(QPointF(12,25), 4, 4);
+        p.drawEllipse(QPointF(12,37), 4, 4);
+        p.drawEllipse(QPointF(37,12), 4, 4);
+        p.drawEllipse(QPointF(37,25), 4, 4);
+        p.drawEllipse(QPointF(37,37), 4, 4);
+        break;
+    default:
+        break;
+    }
 }
 

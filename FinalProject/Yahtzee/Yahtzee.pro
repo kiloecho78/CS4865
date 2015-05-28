@@ -14,12 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gamewindow.cpp \
-    die.cpp
+    die.cpp \
+    scorecard.cpp \
+    player.cpp \
+    rulesdialog.cpp
 
 HEADERS  += gamewindow.h \
-    die.h
+    die.h \
+    scorecard.h \
+    player.h \
+    rulesdialog.h
 
-FORMS    += gamewindow.ui
+FORMS    += gamewindow.ui \
+    rulesdialog.ui
 
 RESOURCES += \
     sheetdie.qrc \
