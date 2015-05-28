@@ -609,30 +609,30 @@ void GameWindow::yahtzeeScore_clicked()
     endTurn();
 }
 
-void GameWindow::die1_clicked(bool s)
+void GameWindow::die1_clicked()
 {
-    diceSet[0]->held = s;
+    diceSet[0]->held ^= 1;
     die1->repaint();
 }
 
-void GameWindow::die2_clicked(bool s)
+void GameWindow::die2_clicked()
 {
-    diceSet[1]->held = s;
+    diceSet[1]->held ^= 1;
     die2->repaint();
 }
-void GameWindow::die3_clicked(bool s)
+void GameWindow::die3_clicked()
 {
-    diceSet[2]->held = s;
+    diceSet[2]->held ^= 1;
     die3->repaint();
 }
-void GameWindow::die4_clicked(bool s)
+void GameWindow::die4_clicked()
 {
-    diceSet[3]->held = s;
+    diceSet[3]->held ^= 1;
     die4->repaint();
 }
-void GameWindow::die5_clicked(bool s)
+void GameWindow::die5_clicked()
 {
-    diceSet[4]->held = s;
+    diceSet[4]->held ^= 1;
     die5->repaint();
 }
 
@@ -644,39 +644,39 @@ void GameWindow::on_action_Rules_triggered()
 void GameWindow::on_checkBox1_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die1_clicked(true);
+        GameWindow::die1_clicked();
     else if(arg1==0)
-        GameWindow::die1_clicked(false);
+        GameWindow::die1_clicked();
 }
 
 void GameWindow::on_checkBox2_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die2_clicked(true);
+        GameWindow::die2_clicked();
     else if(arg1==0)
-        GameWindow::die2_clicked(false);
+        GameWindow::die2_clicked();
 }
 
 void GameWindow::on_checkBox3_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die3_clicked(true);
+        GameWindow::die3_clicked();
     else if(arg1==0)
-        GameWindow::die3_clicked(false);
+        GameWindow::die3_clicked();
 }
 
 void GameWindow::on_checkBox4_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die4_clicked(true);
+        GameWindow::die4_clicked();
     else if(arg1==0)
-        GameWindow::die4_clicked(false);
+        GameWindow::die4_clicked();
 }
 
 void GameWindow::on_checkBox5_stateChanged(int arg1)
 {
     if(arg1==2)
-        GameWindow::die5_clicked(true);
+        GameWindow::die5_clicked();
     else if(arg1==0)
-        GameWindow::die5_clicked(false);
+        GameWindow::die5_clicked();
 }

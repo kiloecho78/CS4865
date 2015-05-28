@@ -115,11 +115,11 @@ private slots:
     void lgsScore_clicked();
     void chanceScore_clicked();
     void yahtzeeScore_clicked();
-    void die1_clicked(bool s);
-    void die2_clicked(bool s);
-    void die3_clicked(bool s);
-    void die4_clicked(bool s);
-    void die5_clicked(bool s);
+    void die1_clicked();
+    void die2_clicked();
+    void die3_clicked();
+    void die4_clicked();
+    void die5_clicked();
     void on_action_Rules_triggered();
     void on_checkBox1_stateChanged(int arg1);
     void on_checkBox2_stateChanged(int arg1);
