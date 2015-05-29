@@ -17,16 +17,19 @@ SOURCES += main.cpp\
     die.cpp \
     scorecard.cpp \
     player.cpp \
-    rulesdialog.cpp
+    rulesdialog.cpp \
+    getplayernamedialog.cpp
 
 HEADERS  += gamewindow.h \
     die.h \
     scorecard.h \
     player.h \
-    rulesdialog.h
+    rulesdialog.h \
+    getplayernamedialog.h
 
 FORMS    += gamewindow.ui \
-    rulesdialog.ui
+    rulesdialog.ui \
+    getplayernamedialog.ui
 
 RESOURCES += \
     sheetdie.qrc \

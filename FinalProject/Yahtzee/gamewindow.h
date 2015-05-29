@@ -120,6 +120,11 @@ private slots:
     void on_checkBox3_stateChanged(int arg1);
     void on_checkBox4_stateChanged(int arg1);
     void on_checkBox5_stateChanged(int arg1);
+    void on_player1Button_clicked();
+    void on_player2Button_clicked();
+    void on_player3Button_clicked();
+    void on_player4Button_clicked();
+    void on_player5Button_clicked();
 };
 
 #endif // GAMEWINDOW_H

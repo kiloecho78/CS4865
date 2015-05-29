@@ -1,9 +1,11 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 #include "rulesdialog.h"
+#include "getplayernamedialog.h"
 #include <QTime>
 
 extern RulesDialog *Rules;
+extern GetPlayerNameDialog *PName;
 float scale = 1.0;
 
 GameWindow::GameWindow(QWidget *parent) :
@@ -12,10 +14,16 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     t.start();
-    player1 = new Player("Keith", 1);
-    player2 = new Player("Amy", 2);
+    player1 = new Player("", 1);
+    player2 = new Player("", 2);
+    player3 = new Player("", 3);
+    player4 = new Player("", 4);
+    player5 = new Player("", 5);
     turnOrder.enqueue(player1);
     turnOrder.enqueue(player2);
+    turnOrder.enqueue(player3);
+    turnOrder.enqueue(player4);
+    turnOrder.enqueue(player5);
     diceSet[0] = (die1 = new Die(this));
     die1->setMinimumSize(50,50);
     die1->setMaximumSize(50,50);
@@ -698,4 +706,44 @@ void GameWindow::on_checkBox5_stateChanged(int arg1)
 {
     diceSet[4]->held = arg1;
     die5->repaint();
+}
+
+void GameWindow::on_player1Button_clicked()
+{
+    if(ui->player1Button->text()=="Player 1")
+    {
+        PName->show();
+    }
+}
+
+void GameWindow::on_player2Button_clicked()
+{
+    if(ui->player2Button->text()=="Player 2")
+    {
+
+    }
+}
+
+void GameWindow::on_player3Button_clicked()
+{
+    if(ui->player3Button->text()=="Player 3")
+    {
+
+    }
+}
+
+void GameWindow::on_player4Button_clicked()
+{
+    if(ui->player4Button->text()=="Player 4")
+    {
+
+    }
+}
+
+void GameWindow::on_player5Button_clicked()
+{
+    if(ui->player5Button->text()=="Player 5")
+    {
+
+    }
 }
