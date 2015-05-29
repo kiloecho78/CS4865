@@ -344,6 +344,13 @@ void GameWindow::playgame()
     (currentPlayer->myScore.lgStraight==-1)? lgStraightScore->setText(""):lgStraightScore->setText(QString::number(currentPlayer->myScore.lgStraight));
     (currentPlayer->myScore.chance==-1)? chanceScore->setText(""):chanceScore->setText(QString::number(currentPlayer->myScore.chance));
     (currentPlayer->myScore.yahtzee==-1)? yahtzeeScore->setText(""):yahtzeeScore->setText(QString::number(currentPlayer->myScore.yahtzee));
+    (currentPlayer->myScore.topSubTotal==-1)? topSubTotalScore->setText(""):topSubTotalScore->setText(QString::number(currentPlayer->myScore.topSubTotal));
+    (currentPlayer->myScore.bonus==-1)? bonusScore->setText(""):bonusScore->setText(QString::number(currentPlayer->myScore.bonus));
+    (currentPlayer->myScore.topTotal==-1)? topGrandTotalScore->setText(""):topGrandTotalScore->setText(QString::number(currentPlayer->myScore.topTotal));
+    (currentPlayer->myScore.topGrandTotal2==-1)? topGrandTotal2Score->setText(""):topGrandTotal2Score->setText(QString::number(currentPlayer->myScore.topGrandTotal2));
+    (currentPlayer->myScore.bottomSubTotal==-1)? bottomSubTotalScore->setText(""):bottomSubTotalScore->setText(QString::number(currentPlayer->myScore.bottomSubTotal));
+    (currentPlayer->myScore.grandTotal==-1)? grandTotalScore->setText(""):grandTotalScore->setText(QString::number(currentPlayer->myScore.grandTotal));
+
 
     for(int i = 0; i<6; i++)
     {
@@ -370,6 +377,7 @@ void GameWindow::endTurn()
     (chanceScore->text()=="")? currentPlayer->myScore.chance = -1: currentPlayer->myScore.chance = chanceScore->text().toInt();
     (yahtzeeScore->text()=="")? currentPlayer->myScore.yahtzee = -1: currentPlayer->myScore.yahtzee = yahtzeeScore->text().toInt();
     (topSubTotalScore->text()=="")? currentPlayer->myScore.topSubTotal = -1: currentPlayer->myScore.topSubTotal = topSubTotalScore->text().toInt();
+    (topGrandTotal2Score->text()=="") ? currentPlayer->myScore.topGrandTotal2 = -1: currentPlayer->myScore.topGrandTotal2 = topGrandTotal2Score->text().toInt();
     (bonusScore->text()=="")? currentPlayer->myScore.bonus = -1: currentPlayer->myScore.bonus = bonusScore->text().toInt();
     (topGrandTotalScore->text()=="")? currentPlayer->myScore.topTotal = -1: currentPlayer->myScore.topTotal = topGrandTotalScore->text().toInt();
     (grandTotalScore->text()=="")? currentPlayer->myScore.grandTotal = -1: currentPlayer->myScore.grandTotal = grandTotalScore->text().toInt();
