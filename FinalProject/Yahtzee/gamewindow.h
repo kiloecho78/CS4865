@@ -30,7 +30,6 @@ private:
     Die *die4;
     Die *die5;
     QPushButton *rollButton;
-//    QPushButton *endTurn;
     QPushButton *oneScore;
     QPushButton *twoScore;
     QPushButton *threeScore;
@@ -81,6 +80,7 @@ private:
     Player *player4;
     Player *player5;
     Player *currentPlayer;
+    int diceVals[5] = {-1,-1,-1,-1,-1};
 
 public:
     explicit GameWindow(QWidget *parent = 0);
@@ -100,7 +100,6 @@ public:
     void endTurn();
 
 private slots:
-//    void endTurn_clicked();
     void rollButton_clicked();
     void oneScore_clicked();
     void twoScore_clicked();
@@ -115,11 +114,6 @@ private slots:
     void lgsScore_clicked();
     void chanceScore_clicked();
     void yahtzeeScore_clicked();
-    void die1_clicked();
-    void die2_clicked();
-    void die3_clicked();
-    void die4_clicked();
-    void die5_clicked();
     void on_action_Rules_triggered();
     void on_checkBox1_stateChanged(int arg1);
     void on_checkBox2_stateChanged(int arg1);
