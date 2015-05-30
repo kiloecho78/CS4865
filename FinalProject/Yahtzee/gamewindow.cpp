@@ -1,11 +1,9 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 #include "rulesdialog.h"
-#include "getplayernamedialog.h"
 #include <QTime>
 
 extern RulesDialog *Rules;
-extern GetPlayerNameDialog *PName;
 float scale = 1.0;
 
 GameWindow::GameWindow(QWidget *parent) :
@@ -14,6 +12,7 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     t.start();
+    ui->inputBox->hide();
     player1 = new Player("", 1);
     player2 = new Player("", 2);
     player3 = new Player("", 3);
@@ -207,6 +206,8 @@ void GameWindow::showDice()
 
 void GameWindow::rollButton_clicked()
 {
+    if(playerNameColHeader->text()!=currentPlayer->myname)
+        playerNameColHeader->setText(currentPlayer->myname);
     if(currentPlayer->rolls > 0)
     {
         qsrand(t.elapsed());
@@ -339,6 +340,7 @@ void GameWindow::playgame()
     if(ui->checkBox5->isChecked() == true)ui->checkBox5->setChecked(false);
     currentPlayer->rolls = 3;
     playerNameColHeader->setText(currentPlayer->myname);
+    setColors(currentPlayer->playerNum);
     (currentPlayer->myScore.ones==-1)? oneScore->setText(""):oneScore->setText(QString::number(currentPlayer->myScore.ones));
     (currentPlayer->myScore.twos==-1)? twoScore->setText(""):twoScore->setText(QString::number(currentPlayer->myScore.twos));
     (currentPlayer->myScore.threes==-1)? threeScore->setText(""):threeScore->setText(QString::number(currentPlayer->myScore.threes));
@@ -423,6 +425,35 @@ void GameWindow::endTurn()
     }
     currentPlayer->myScore.bottomScoreSetArray[7] = bottomScoreSetArray[7];
     playgame();
+}
+
+void GameWindow::setColors(int playerNumber)
+{
+    QPalette Pal(palette());
+    switch (playerNumber)
+    {
+    case 1:
+        Pal.setColor(QPalette::Background, QColor(85,255,00,255));
+        break;
+    case 2:
+        Pal.setColor(QPalette::Background, QColor(255,0,0,255));
+        break;
+    case 3:
+        Pal.setColor(QPalette::Background, QColor(85,170,255,255));
+        break;
+    case 4:
+        Pal.setColor(QPalette::Background, QColor(255,255,0,255));
+        break;
+    case 5:
+        Pal.setColor(QPalette::Background, QColor(126,253,255,255));
+        break;
+
+    default:
+        break;
+    }
+
+    ui->scoreCardFrame->setPalette(Pal);
+    ui->scoreCardFrame->show();
 }
 
 void GameWindow::oneScore_clicked()
@@ -712,7 +743,9 @@ void GameWindow::on_player1Button_clicked()
 {
     if(ui->player1Button->text()=="Player 1")
     {
-        PName->show();
+        buttonToPaint = 1;
+        ui->inputBox->show();
+        ui->usernameBox->setFocus();
     }
 }
 
@@ -720,7 +753,9 @@ void GameWindow::on_player2Button_clicked()
 {
     if(ui->player2Button->text()=="Player 2")
     {
-
+        buttonToPaint = 2;
+        ui->inputBox->show();
+        ui->usernameBox->setFocus();
     }
 }
 
@@ -728,7 +763,9 @@ void GameWindow::on_player3Button_clicked()
 {
     if(ui->player3Button->text()=="Player 3")
     {
-
+        buttonToPaint = 3;
+        ui->inputBox->show();
+        ui->usernameBox->setFocus();
     }
 }
 
@@ -736,7 +773,9 @@ void GameWindow::on_player4Button_clicked()
 {
     if(ui->player4Button->text()=="Player 4")
     {
-
+        buttonToPaint = 4;
+        ui->inputBox->show();
+        ui->usernameBox->setFocus();
     }
 }
 
@@ -744,6 +783,41 @@ void GameWindow::on_player5Button_clicked()
 {
     if(ui->player5Button->text()=="Player 5")
     {
-
+        buttonToPaint = 5;
+        ui->inputBox->show();
+        ui->usernameBox->setFocus();
     }
+}
+
+void GameWindow::on_accept_clicked()
+{
+    switch(buttonToPaint)
+    {
+    case 1:
+        ui->player1Button->setText(ui->usernameBox->text());
+        player1->myname = ui->usernameBox->text();
+        break;
+    case 2:
+        ui->player2Button->setText(ui->usernameBox->text());
+        player2->myname = ui->usernameBox->text();
+        break;
+    case 3:
+        ui->player3Button->setText(ui->usernameBox->text());
+        player3->myname = ui->usernameBox->text();
+        break;
+    case 4:
+        ui->player4Button->setText(ui->usernameBox->text());
+        player4->myname = ui->usernameBox->text();
+        break;
+    case 5:
+        ui->player5Button->setText(ui->usernameBox->text());
+        player5->myname = ui->usernameBox->text();
+        break;
+    default:
+        break;
+    }
+    playerNameColHeader->setText(ui->usernameBox->text());
+    buttonToPaint = 0;
+    ui->usernameBox->setText("");
+    ui->inputBox->hide();
 }

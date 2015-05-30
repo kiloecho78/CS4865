@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QMainWindow>
 #include <QQueue>
+#include <QPalette>
 #include "player.h"
 
 namespace Ui {
@@ -81,6 +82,7 @@ private:
     Player *player5;
     Player *currentPlayer;
     int diceVals[5] = {-1,-1,-1,-1,-1};
+    int buttonToPaint = 0;
 
 public:
     explicit GameWindow(QWidget *parent = 0);
@@ -98,6 +100,7 @@ public:
     void createSet();
     void playgame();
     void endTurn();
+    void setColors(int playerNumber);
 
 private slots:
     void rollButton_clicked();
@@ -125,6 +128,7 @@ private slots:
     void on_player3Button_clicked();
     void on_player4Button_clicked();
     void on_player5Button_clicked();
+    void on_accept_clicked();
 };
 
 #endif // GAMEWINDOW_H
