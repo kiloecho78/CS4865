@@ -13,9 +13,9 @@ public:
     int fours = -1;
     int fives = -1;
     int sixes = -1;
-    int topSubTotal;
-    int bonus;
-    int topTotal;
+    int topSubTotal = -1;
+    int bonus = -1;
+    int topTotal = -1;
     int threeOfAKind = -1;
     int fourOfAKind = -1;
     int fullHouse = -1;
@@ -23,9 +23,9 @@ public:
     int lgStraight = -1;
     int chance = -1;
     int yahtzee = -1;
-    int extraYahtzee = -1;
-    int bottomSubTotal;
-    int grandTotal;
+    int topGrandTotal2 = -1;
+    int bottomSubTotal = -1;
+    int grandTotal = -1;
     bool topScoreSetArray[6];
     bool bottomScoreSetArray[7];
 
