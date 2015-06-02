@@ -785,11 +785,27 @@
          </disabled>
         </palette>
        </property>
+       <property name="font">
+        <font>
+         <family>Copperplate Gothic Light</family>
+         <pointsize>16</pointsize>
+         <underline>false</underline>
+        </font>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
        <property name="text">
         <string>Player 1</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -838,11 +854,20 @@
          </disabled>
         </palette>
        </property>
+       <property name="font">
+        <font>
+         <family>Copperplate Gothic Light</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
        <property name="text">
         <string>Player 2</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -891,11 +916,20 @@
          </disabled>
         </palette>
        </property>
+       <property name="font">
+        <font>
+         <family>Copperplate Gothic Light</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
        <property name="text">
         <string>Player 3</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -943,6 +977,12 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="font">
+        <font>
+         <family>Copperplate Gothic Light</family>
+         <pointsize>16</pointsize>
+        </font>
        </property>
        <property name="autoFillBackground">
         <bool>true</bool>
@@ -997,6 +1037,12 @@
          </disabled>
         </palette>
        </property>
+       <property name="font">
+        <font>
+         <family>Copperplate Gothic Light</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1028,9 +1074,14 @@
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>141</width>
+          <width>171</width>
           <height>30</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Copperplate Gothic Light</family>
+         </font>
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Enter Player Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1039,9 +1090,9 @@
        <widget class="QLineEdit" name="usernameBox">
         <property name="geometry">
          <rect>
-          <x>172</x>
+          <x>192</x>
           <y>10</y>
-          <width>171</width>
+          <width>151</width>
           <height>20</height>
          </rect>
         </property>
@@ -1094,6 +1145,20 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>usernameBox</tabstop>
+  <tabstop>accept</tabstop>
+  <tabstop>checkBox1</tabstop>
+  <tabstop>checkBox2</tabstop>
+  <tabstop>checkBox3</tabstop>
+  <tabstop>checkBox4</tabstop>
+  <tabstop>checkBox5</tabstop>
+  <tabstop>player1Button</tabstop>
+  <tabstop>player2Button</tabstop>
+  <tabstop>player3Button</tabstop>
+  <tabstop>player4Button</tabstop>
+  <tabstop>player5Button</tabstop>
+ </tabstops>
  <resources>
   <include location="icon.qrc"/>
  </resources>

@@ -17,15 +17,10 @@ Die::~Die()
 
 }
 
-void Die::mouseReleaseEvent(QMouseEvent *ev)
-{
-
-}
-
 void Die::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    resize(50*scale, 50*scale);
+    resize(70*scale, 70*scale);
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(dieEdgeColor);
     if(this->held == true)
@@ -35,43 +30,43 @@ void Die::paintEvent(QPaintEvent *event)
     else
         p.setBrush(dieCenterColor);
     p.scale(scale,scale);
-    p.drawRect(0,0,50,50);
+    p.drawRect(0,0,70,70);
     p.setBrush(dieEdgeColor);
     int face = this->value;
     switch(face)
     {
     case 1:
-        p.drawEllipse(QPointF(25,25), 4, 4);
+        p.drawEllipse(QPointF(35,35), 6, 6);
         break;
     case 2:
-        p.drawEllipse(QPointF(12,12), 4, 4);
-        p.drawEllipse(QPointF(37,37), 4, 4);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     case 3:
-        p.drawEllipse(QPointF(12,12), 4, 4);
-        p.drawEllipse(QPointF(25,25), 4, 4);
-        p.drawEllipse(QPointF(37,37), 4, 4);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(35,35), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     case 4:
-        p.drawEllipse(QPointF(12,12), 4, 4);
-        p.drawEllipse(QPointF(12,37), 4, 4);
-        p.drawEllipse(QPointF(37,12), 4, 4);
-        p.drawEllipse(QPointF(37,37), 4, 4);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(17,52), 6, 6);
+        p.drawEllipse(QPointF(52,17), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     case 5:
-        p.drawEllipse(QPointF(12,12), 4, 4);
-        p.drawEllipse(QPointF(12,37), 4, 4);
-        p.drawEllipse(QPointF(25,25), 4, 4);
-        p.drawEllipse(QPointF(37,12), 4, 4);
-        p.drawEllipse(QPointF(37,37), 4, 4);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(17,52), 6, 6);
+        p.drawEllipse(QPointF(35,35), 6, 6);
+        p.drawEllipse(QPointF(52,17), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     case 6:
-        p.drawEllipse(QPointF(12,12), 4, 4);
-        p.drawEllipse(QPointF(12,25), 4, 4);
-        p.drawEllipse(QPointF(12,37), 4, 4);
-        p.drawEllipse(QPointF(37,12), 4, 4);
-        p.drawEllipse(QPointF(37,25), 4, 4);
-        p.drawEllipse(QPointF(37,37), 4, 4);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(17,35), 6, 6);
+        p.drawEllipse(QPointF(17,52), 6, 6);
+        p.drawEllipse(QPointF(52,17), 6, 6);
+        p.drawEllipse(QPointF(52,35), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     default:
         break;
