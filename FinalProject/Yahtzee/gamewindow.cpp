@@ -49,7 +49,7 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(rollButton,SIGNAL(clicked()),this,SLOT(rollButton_clicked()));
     ui->diceGridLayout->addWidget(rollButton,2,2,Qt::AlignCenter);
     gameColHeader = new QLabel(QString("Yahtzee!"));
-    QFont f("Arial", 28, QFont::Bold);
+    QFont f("Bauhaus 93", 28, QFont::Bold);
     gameColHeader->setFont(f);
     gameColHeader->setFrameShape(QFrame::Box);
     gameColHeader->setLineWidth(2);
@@ -424,6 +424,9 @@ void GameWindow::endTurn()
         currentPlayer->myScore.bottomScoreSetArray[i] = bottomScoreSetArray[i];
     }
     currentPlayer->myScore.bottomScoreSetArray[7] = bottomScoreSetArray[7];
+    for(int i = 0; i < 5; i++)
+        diceSet[i]->value = 0;
+    showDice();
     playgame();
 }
 

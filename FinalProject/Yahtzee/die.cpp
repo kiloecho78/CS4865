@@ -69,6 +69,15 @@ void Die::paintEvent(QPaintEvent *event)
         p.drawEllipse(QPointF(52,52), 6, 6);
         break;
     default:
+        p.setBrush(dieCenterColor);
+        p.setPen(dieCenterColor);
+        p.drawEllipse(QPointF(17,17), 6, 6);
+        p.drawEllipse(QPointF(17,35), 6, 6);
+        p.drawEllipse(QPointF(17,52), 6, 6);
+        p.drawEllipse(QPointF(52,17), 6, 6);
+        p.drawEllipse(QPointF(52,35), 6, 6);
+        p.drawEllipse(QPointF(52,52), 6, 6);
+        p.drawEllipse(QPointF(35,35), 6, 6);
         break;
     }
 }
