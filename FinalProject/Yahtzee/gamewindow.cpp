@@ -797,6 +797,7 @@ void GameWindow::on_accept_clicked()
     case 1:
         ui->player1Button->setText(ui->usernameBox->text());
         player1->myname = ui->usernameBox->text();
+
         break;
     case 2:
         ui->player2Button->setText(ui->usernameBox->text());

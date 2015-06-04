@@ -1,23 +1,34 @@
 #include "gameclient.h"
 
+static inline QByteArray IntToArray(qint32 source);
+
 GameClient::GameClient(QObject *parent) : QObject(parent)
 {
-    connect(&client, SIGNAL(connected()), this,  SLOT(startTransfer()));
+    socket = new QTcpSocket(this);
 }
 
-GameClient::~GameClient()
+bool GameClient::connectToHost(QString host)
 {
-    client.close();
+    socket->connectToHost(host, 7878);
+    return socket->waitForConnected();
 }
 
-void GameClient::start(QString address, quint16 port)
+bool GameClient::writeData(QByteArray data)
 {
-    QHostAddress addr(address);
-    client.connectToHost(addr, port);
+    if(socket->state()==QAbstractSocket::ConnectedState)
+    {
+        socket->write(IntToArray(data.size()));
+        socket->write(data);
+        return socket->waitForBytesWritten();
+    }
+    else
+        return false;
 }
 
-void GameClient::startTransfer()
+QByteArray IntToArray(qint32 source)
 {
-    client.write("Hello Host", 10);
+    QByteArray temp;
+    QDataStream data(&temp, QIODevice::ReadWrite);
+    data<<source;
+    return temp;
 }
-

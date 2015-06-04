@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QtNetwork>
+#include <QtCore>
 #include <QString>
 #include <QTcpSocket>
 
@@ -11,18 +12,15 @@ class GameClient : public QObject
     Q_OBJECT
 public:
     explicit GameClient(QObject *parent = 0);
-    ~GameClient();
-    void start(QString address, quint16 port);
     QString package;
     int pkgsize;
 
-signals:
-
 public slots:
-    void startTransfer();
+    bool connectToHost(QString host);
+    bool writeData(QByteArray data);
 
 private:
-    QTcpSocket client;
+    QTcpSocket *socket;
 };
 
 #endif // GAMECLIENT_H
