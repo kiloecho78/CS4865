@@ -2,13 +2,14 @@
 #define GAMEWINDOW_H
 
 #include "die.h"
+#include "player.h"
 #include <QTime>
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
 #include <QMainWindow>
 #include <QQueue>
-#include "player.h"
+#include <QPalette>
 
 namespace Ui {
 class GameWindow;
@@ -20,17 +21,25 @@ class GameWindow : public QMainWindow
 
 private:
     Ui::GameWindow *ui;
-    Die *diceSet[5];
-    QPushButton *scoreButtonSet[13];
-    QLabel *scoreLabelSet[6];
-    QTime t;
+    bool topScoreSetArray[6];
+    bool bottomScoreSetArray[7];
+    int sectionsCompleted = 0;
+    int diceVals[5] = {-1,-1,-1,-1,-1};
+    int buttonToPaint = 0;
     Die *die1;
     Die *die2;
     Die *die3;
     Die *die4;
     Die *die5;
+    Die *diceSet[5];
+    Player *player1;
+    Player *player2;
+    Player *player3;
+    Player *player4;
+    Player *player5;
+    Player *currentPlayer;
+    QPushButton *scoreButtonSet[13];
     QPushButton *rollButton;
-//    QPushButton *endTurn;
     QPushButton *oneScore;
     QPushButton *twoScore;
     QPushButton *threeScore;
@@ -44,10 +53,7 @@ private:
     QPushButton *lgStraightScore;
     QPushButton *chanceScore;
     QPushButton *yahtzeeScore;
-    bool topScoreSetArray[6];
-    bool bottomScoreSetArray[7];
-    int sectionsCompleted = 0;
-    QQueue <Player*>turnOrder;
+    QLabel *scoreLabelSet[6];
     QLabel *one;
     QLabel *two;
     QLabel *three;
@@ -75,32 +81,27 @@ private:
     QLabel *grandTotalScore;
     QLabel *gameColHeader;
     QLabel *playerNameColHeader;
-    Player *player1;
-    Player *player2;
-    Player *player3;
-    Player *player4;
-    Player *player5;
-    Player *currentPlayer;
+    QTime t;
+    QQueue <Player*>turnOrder;
 
 public:
     explicit GameWindow(QWidget *parent = 0);
-    void resizeEvent(QResizeEvent * event);
     ~GameWindow();
-    void sortDice();
-    void showDice();
-    void setUpScoreButtonArray();
-    void setUpScoreLabelArray();
     bool goFish(int x);
     bool checkSmallStraight();
     void checkTopComplete();
     void checkBottomComplete();
-    void finalScore();
     void createSet();
-    void playgame();
     void endTurn();
+    void finalScore();
+    void setColors(int playerNumber);
+    void setUpScoreButtonArray();
+    void setUpScoreLabelArray();
+    void sortDice();
+    void showDice();
+    void playgame();
 
 private slots:
-//    void endTurn_clicked();
     void rollButton_clicked();
     void oneScore_clicked();
     void twoScore_clicked();
@@ -115,22 +116,19 @@ private slots:
     void lgsScore_clicked();
     void chanceScore_clicked();
     void yahtzeeScore_clicked();
-
     void on_action_Rules_triggered();
     void on_checkBox1_stateChanged(int arg1);
     void on_checkBox2_stateChanged(int arg1);
     void on_checkBox3_stateChanged(int arg1);
     void on_checkBox4_stateChanged(int arg1);
     void on_checkBox5_stateChanged(int arg1);
-
-    void on_die1_toggled(bool checked);
-
-public slots:
-    void die1_clicked();
-    void die2_clicked();
-    void die3_clicked();
-    void die4_clicked();
-    void die5_clicked();
+    void on_player1Button_clicked();
+    void on_player2Button_clicked();
+    void on_player3Button_clicked();
+    void on_player4Button_clicked();
+    void on_player5Button_clicked();
+    void on_accept_clicked();
+    void on_actionE_xit_triggered();
 };
 
 #endif // GAMEWINDOW_H

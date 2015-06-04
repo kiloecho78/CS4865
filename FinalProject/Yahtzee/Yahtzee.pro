@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,13 +17,17 @@ SOURCES += main.cpp\
     die.cpp \
     scorecard.cpp \
     player.cpp \
-    rulesdialog.cpp
+    rulesdialog.cpp \
+    gameserver.cpp \
+    gameclient.cpp
 
 HEADERS  += gamewindow.h \
     die.h \
     scorecard.h \
     player.h \
-    rulesdialog.h
+    rulesdialog.h \
+    gameserver.h \
+    gameclient.h
 
 FORMS    += gamewindow.ui \
     rulesdialog.ui

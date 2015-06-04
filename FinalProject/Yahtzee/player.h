@@ -18,7 +18,6 @@ private:
 public:
     Player(QString name, int i);
     ~Player();
-    void getMyScore();
     friend class GameWindow;
 };
 
