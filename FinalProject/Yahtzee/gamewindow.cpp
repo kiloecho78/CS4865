@@ -7,6 +7,8 @@
 #include <QThread>
 
 extern RulesDialog *Rules;
+extern GameClient *Client;
+extern GameServer *Server;
 float scale = 1.0;
 
 GameWindow::GameWindow(QWidget *parent) :
