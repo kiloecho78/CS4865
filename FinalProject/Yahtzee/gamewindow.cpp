@@ -1,7 +1,10 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 #include "rulesdialog.h"
+#include "gameclient.h"
+#include "gameserver.h"
 #include <QTime>
+#include <QThread>
 
 extern RulesDialog *Rules;
 float scale = 1.0;
@@ -164,22 +167,21 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(lgsScore_clicked()));
     connect(chanceScore,SIGNAL(clicked()),this,SLOT(chanceScore_clicked()));
     connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(yahtzeeScore_clicked()));
-    playgame();
-}
 
-void GameWindow::resizeEvent(QResizeEvent *event)
-{
-    /*scale = qMin(width()/360.0, height()/300.0);
-    ui->die1->setGeometry(0,0,scale*100, scale*100);
-    ui->die2->setGeometry(0,0,scale*100, scale*100);
-    ui->die3->setGeometry(0,0,scale*100, scale*100);
-    ui->die4->setGeometry(0,0,scale*100, scale*100);
-    ui->die5->setGeometry(0,0,scale*100, scale*100);*/
+    playgame();
 }
 
 GameWindow::~GameWindow()
 {
     delete ui;
+}
+
+bool GameWindow::goFish(int x)
+{
+    for(int i = 0; i<5; i++)
+        if(diceVals[i]==x)
+            return true;
+    return false;
 }
 
 void GameWindow::sortDice()
@@ -197,7 +199,7 @@ void GameWindow::sortDice()
 
 void GameWindow::showDice()
 {
-    for(int i = 0; i<6; i++)
+    for(int i = 0; i<5; i++)
     {
         diceSet[i]->repaint();
     }
@@ -252,13 +254,6 @@ void GameWindow::setUpScoreLabelArray()
     scoreLabelSet[5]= grandTotalScore;
 }
 
-bool GameWindow::goFish(int x)
-{
-    for(int i = 0; i<5; i++)
-        if(diceVals[i]==x)
-            return true;
-    return false;
-}
 
 bool GameWindow::checkSmallStraight()
 {
@@ -427,6 +422,7 @@ void GameWindow::endTurn()
     for(int i = 0; i < 5; i++)
         diceSet[i]->value = 0;
     showDice();
+    QThread::sleep(2);
     playgame();
 }
 
@@ -823,4 +819,9 @@ void GameWindow::on_accept_clicked()
     buttonToPaint = 0;
     ui->usernameBox->setText("");
     ui->inputBox->hide();
+}
+
+void GameWindow::on_actionE_xit_triggered()
+{
+    exit(0);
 }

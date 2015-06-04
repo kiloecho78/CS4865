@@ -133,7 +133,7 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>170</green>
+          <green>153</green>
           <blue>0</blue>
          </color>
         </brush>
@@ -153,7 +153,7 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>170</green>
+          <green>153</green>
           <blue>0</blue>
          </color>
         </brush>
@@ -164,7 +164,7 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>170</green>
+          <green>153</green>
           <blue>0</blue>
          </color>
         </brush>
@@ -173,7 +173,7 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>170</green>
+          <green>153</green>
           <blue>0</blue>
          </color>
         </brush>
@@ -1116,6 +1116,7 @@
      <string>&amp;Game</string>
     </property>
     <addaction name="action_New_Game"/>
+    <addaction name="actionE_xit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1141,6 +1142,14 @@
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionE_xit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
    </property>
   </action>
  </widget>

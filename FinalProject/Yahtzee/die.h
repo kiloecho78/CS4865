@@ -12,7 +12,6 @@ private:
     bool held;
 public:
     Die(QWidget *parent);
-    ~Die();
     void paintEvent(QPaintEvent *ev);
     friend class GameWindow;
 };

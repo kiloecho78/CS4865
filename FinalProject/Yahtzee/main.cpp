@@ -11,6 +11,5 @@ int main(int argc, char *argv[])
     RulesDialog rd;
     w.show();
     Rules = &rd;
-
     return a.exec();
 }
