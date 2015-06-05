@@ -131,7 +131,6 @@ private slots:
     void on_accept_clicked();
     void on_actionE_xit_triggered();
     void on_broadCastButton_clicked();
-    void on_gameConnect_clicked();
 };
 
 #endif // GAMEWINDOW_H
