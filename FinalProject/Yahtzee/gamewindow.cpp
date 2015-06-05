@@ -828,3 +828,18 @@ void GameWindow::on_actionE_xit_triggered()
 {
     exit(0);
 }
+
+void GameWindow::on_broadCastButton_clicked()
+{
+    bool connected;
+    connected = Client->connectToHost(host);
+    if(connected)
+        ui->statusBar->showMessage(host);
+    else
+        ui->statusBar->showMessage("Not Connected");
+}
+
+void GameWindow::on_gameConnect_clicked()
+{
+    GameWindow::on_broadCastButton_clicked();
+}

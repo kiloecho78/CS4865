@@ -38,6 +38,7 @@ private:
     Player *player4;
     Player *player5;
     Player *currentPlayer;
+    QString host = "sn237s16";
     QPushButton *scoreButtonSet[13];
     QPushButton *rollButton;
     QPushButton *oneScore;
@@ -129,6 +130,8 @@ private slots:
     void on_player5Button_clicked();
     void on_accept_clicked();
     void on_actionE_xit_triggered();
+    void on_broadCastButton_clicked();
+    void on_gameConnect_clicked();
 };
 
 #endif // GAMEWINDOW_H
