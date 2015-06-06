@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     player.cpp \
     rulesdialog.cpp \
     gameserver.cpp \
-    gameclient.cpp
+    gameclient.cpp \
+    connection.cpp \
+    peermanager.cpp
 
 HEADERS  += gamewindow.h \
     die.h \
@@ -27,7 +29,9 @@ HEADERS  += gamewindow.h \
     player.h \
     rulesdialog.h \
     gameserver.h \
-    gameclient.h
+    gameclient.h \
+    connection.h \
+    peermanager.h
 
 FORMS    += gamewindow.ui \
     rulesdialog.ui

@@ -1,30 +1,26 @@
 #ifndef GAMESERVER_H
 #define GAMESERVER_H
 
-#include <QObject>
-#include <QtCore>
-#include <QTcpSocket>
-#include <QTcpServer>
-#include <QtNetwork>
 
-class GameServer : public QObject
+#include <QTcpServer>
+
+class Connection;
+
+
+class GameServer : public QTcpServer
 {
     Q_OBJECT
 public:
-    explicit GameServer(QObject *parent = 0);
+    GameServer(QObject *parent = 0);
+
+public:
+    Server(QObject *parent = 0);
 
 signals:
-    void dataReceived(QByteArray);
+    void newConnection(Connection *connection);
 
-public slots:
-    void newConnection();
-    void disconnected();
-    void readyRead();
-
-private:
-    QTcpServer *server;
-    QHash<QTcpSocket*, QByteArray*> buffers;
-    QHash<QTcpSocket*, qint32*> sizes;
+protected:
+    void incomingConnection(qintptr socketDescriptor) Q_DECL_OVERRIDE;
 };
 
 #endif // GAMESERVER_H

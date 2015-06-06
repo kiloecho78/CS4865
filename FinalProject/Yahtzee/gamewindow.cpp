@@ -831,14 +831,5 @@ void GameWindow::on_actionE_xit_triggered()
 
 void GameWindow::on_broadCastButton_clicked()
 {
-    bool connected;
-    if(host == NULL)
-    {
-        host = QHostInfo::localHostName();
-        connected = Client->connectToHost(host);
-    }
-    if(connected)
-        ui->statusBar->showMessage(host);
-    else
-        ui->statusBar->showMessage("Not Connected");
+
 }
