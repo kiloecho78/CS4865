@@ -358,7 +358,7 @@
       <x>9</x>
       <y>149</y>
       <width>351</width>
-      <height>481</height>
+      <height>501</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -1100,19 +1100,6 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="broadCastButton">
-    <property name="geometry">
-     <rect>
-      <x>124</x>
-      <y>630</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Connect to Players</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

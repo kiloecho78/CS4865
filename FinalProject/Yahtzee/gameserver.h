@@ -13,9 +13,6 @@ class GameServer : public QTcpServer
 public:
     GameServer(QObject *parent = 0);
 
-public:
-    Server(QObject *parent = 0);
-
 signals:
     void newConnection(Connection *connection);
 

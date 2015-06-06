@@ -24,6 +24,7 @@ public:
         Ping,
         Pong,
         Greeting,
+//        Button,
         Undefined
     };
 
@@ -32,10 +33,12 @@ public:
     QString name() const;
     void setGreetingMessage(const QString &message);
     bool sendMessage(const QString &message);
+//    bool sendButton(const QString &button, const QString &value);
 
 signals:
     void readyForUse();
     void newMessage(const QString &from, const QString &message);
+    void newButtonPush(const QString &from, const QString &message);
 
 protected:
     void timerEvent(QTimerEvent *timerEvent) Q_DECL_OVERRIDE;

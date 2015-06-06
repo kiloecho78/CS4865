@@ -46,6 +46,16 @@ bool Connection::sendMessage(const QString &message)
     return write(data) == data.size();
 }
 
+/*bool Connection::sendButton(const QString &button, const QString &value)
+{
+    if(button.isEmpty() || value.isEmpty())
+        return false;
+    QByteArray btn = button.toUtf8();
+    btn.append("\\" + value.toUtf8());
+    QByteArray val = "BUTTON " + QByteArray::number(btn.size()) + ' ' + btn;
+    return write(val) == val.size();
+}*/
+
 void Connection::timerEvent(QTimerEvent *timerEvent)
 {
     if (timerEvent->timerId() == transferTimerId) {
@@ -177,7 +187,9 @@ bool Connection::readProtocolHeader()
         currentDataType = PlainText;
     } else if (buffer == "GREETING ") {
         currentDataType = Greeting;
-    } else {
+    }/*else if (buffer == "BUTTON ") {
+        currentDataType = Button;
+    }*/ else {
         currentDataType = Undefined;
         abort();
         return false;
@@ -225,7 +237,10 @@ void Connection::processData()
     case Pong:
         pongTime.restart();
         break;
-    default:
+/*    case Button:
+        emit newButtonPush(username, QString::fromUtf8(buffer));
+        break;
+*/    default:
         break;
     }
 

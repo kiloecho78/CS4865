@@ -169,7 +169,14 @@ GameWindow::GameWindow(QWidget *parent) :
     connect(lgStraightScore,SIGNAL(clicked()),this,SLOT(lgsScore_clicked()));
     connect(chanceScore,SIGNAL(clicked()),this,SLOT(chanceScore_clicked()));
     connect(yahtzeeScore,SIGNAL(clicked()),this,SLOT(yahtzeeScore_clicked()));
-
+    connect(ui->usernameBox,SIGNAL(returnPressed()), this, SLOT(returnPressed()));
+    connect(&client, SIGNAL(newMessage(QString,QString)), this, SLOT(appendMessage(QString,QString)));
+//    connect(&client, SIGNAL(newButton(QString,QString)), this, SLOT(pushButton(QString, QString)));
+    connect(&client, SIGNAL(newParticipant(QString)),this, SLOT(newParticipant(QString)));
+    connect(&client, SIGNAL(participantLeft(QString)),this, SLOT(participantLeft(QString)));
+    myNickName = client.nickName();
+    newParticipant(myNickName);
+    tableFormat.setBorder(0);
     playgame();
 }
 
@@ -822,6 +829,7 @@ void GameWindow::on_accept_clicked()
     buttonToPaint = 0;
     ui->usernameBox->setText("");
     ui->inputBox->hide();
+    
 }
 
 void GameWindow::on_actionE_xit_triggered()
@@ -829,7 +837,38 @@ void GameWindow::on_actionE_xit_triggered()
     exit(0);
 }
 
-void GameWindow::on_broadCastButton_clicked()
+void GameWindow::appendMessage(const QString &from, const QString &message)
+{
+    ui->statusBar->showMessage(from);
+}
+
+/*void GameWindow::pushButton(const QString &button, const QString &value)
 {
 
+}*/
+
+void GameWindow::returnPressed()
+{
+    QString text = ui->usernameBox->text();
+    if(text.isEmpty())
+        return;
+    client.sendMessage(text);
+    appendMessage(myNickName, text);
+    text = QString::number(buttonToPaint);
+    appendMessage(myNickName, text);
 }
+
+void GameWindow::newParticipant(const QString &nick)
+{
+    if(nick.isEmpty())
+        return;
+    ui->statusBar->showMessage(tr("* %1 has joined").arg(nick));
+}
+
+void GameWindow::participantLeft(const QString &nick)
+{
+    if(nick.isEmpty())
+        return;
+    ui->statusBar->showMessage(tr("* %1 has left").arg(nick));
+}
+

@@ -3,6 +3,7 @@
 
 #include "die.h"
 #include "player.h"
+#include "gameclient.h"
 #include <QTime>
 #include <QLineEdit>
 #include <QLabel>
@@ -84,6 +85,13 @@ private:
     QLabel *playerNameColHeader;
     QTime t;
     QQueue <Player*>turnOrder;
+    GameClient client;
+    QString myNickName;
+    QTextTableFormat tableFormat;
+
+public slots:
+    void appendMessage(const QString &from, const QString &message);
+//    void pushButton(const QString &button, const QString &value);
 
 public:
     explicit GameWindow(QWidget *parent = 0);
@@ -130,7 +138,9 @@ private slots:
     void on_player5Button_clicked();
     void on_accept_clicked();
     void on_actionE_xit_triggered();
-    void on_broadCastButton_clicked();
+    void returnPressed();
+    void newParticipant(const QString &nick);
+    void participantLeft(const QString &nick);
 };
 
 #endif // GAMEWINDOW_H

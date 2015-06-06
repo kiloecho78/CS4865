@@ -28,6 +28,16 @@ void GameClient::sendMessage(const QString &message)
         connection->sendMessage(message);
 }
 
+/*void GameClient::sendButton(const QString &button, const QString &value)
+{
+    if (button.isEmpty() || value.isEmpty())
+        return;
+
+    QList<Connection *> connections = peers.values();
+    foreach (Connection *connection, connections)
+        connection->sendButton(button, value);
+}*/
+
 QString GameClient::nickName() const
 {
     return QString(peerManager->userName()) + '@' + QHostInfo::localHostName()
@@ -70,6 +80,7 @@ void GameClient::readyForUse()
 
     connect(connection, SIGNAL(newMessage(QString,QString)),
             this, SIGNAL(newMessage(QString,QString)));
+//    connect(connection, SIGNAL(newButtonPush(QString,QString)), this, SIGNAL(newButton(QString,QString)));
 
     peers.insert(connection->peerAddress(), connection);
     QString nick = connection->name();
